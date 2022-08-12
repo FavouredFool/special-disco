@@ -1,4 +1,5 @@
 extends KinematicBody2D
+class_name Player
 
 # onready
 onready var CoyoteTimer : Timer = $CoyoteTimer
@@ -37,7 +38,6 @@ func _physics_process(delta:float) -> void:
 	
 	# Get Key Information
 	var is_falling : bool = _velocity.y > 0.0 and not is_on_floor()
-	
 	var is_jump_cancelled : bool = Input.is_action_just_released("jump") and _velocity.y < 0.0
 	var is_idling : bool = is_on_floor() and is_zero_approx(_velocity.x)
 	var is_running : bool = is_on_floor() and not is_zero_approx(_velocity.x)
@@ -49,7 +49,6 @@ func _physics_process(delta:float) -> void:
 		_velocity.y = 0.0
 	
 	_velocity = move_and_slide(_velocity, UP_DIRECTION)
-
 
 func _on_Timer_timeout():
 	_jump_avaliable = false

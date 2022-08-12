@@ -8,6 +8,22 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "KinematicBody2D",
+"class": "Dog",
+"language": "GDScript",
+"path": "res://Scripts/DogScript.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "Player",
+"language": "GDScript",
+"path": "res://Scripts/PlayerScript.gd"
+} ]
+_global_script_class_icons={
+"Dog": "",
+"Player": ""
+}
+
 [application]
 
 config/name="special-disco"
