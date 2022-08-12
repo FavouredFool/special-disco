@@ -7,6 +7,7 @@
 extents = Vector2( 16, 17 )
 
 [node name="Dog" type="KinematicBody2D"]
+collision_mask = 3
 collision/safe_margin = 1.0
 script = ExtResource( 2 )
 speed = 100.0

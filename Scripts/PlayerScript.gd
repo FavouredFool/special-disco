@@ -18,6 +18,8 @@ var _jump_avaliable : bool
 var _horizontal_direction : float
 var _desires_jump : bool
 
+var _ballSpawnPoint : Vector2 = Vector2.ZERO
+
 func _process(delta):
 	_horizontal_direction = (
 		Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
@@ -25,6 +27,7 @@ func _process(delta):
 	
 	if not _desires_jump:
 		_desires_jump = Input.is_action_just_pressed("jump") and _jump_avaliable
+
 
 func _physics_process(delta:float) -> void:
 	
