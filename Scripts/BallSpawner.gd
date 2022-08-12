@@ -7,16 +7,27 @@ onready var player = get_node("/root/Main/Player")
 var ball : PackedScene = preload("res://Scenes/Ball.tscn")
 var ball_instance : RigidBody2D = null
 
-export var throw_strength : float = 300.0
+export var max_throw_strength : float = 300.0
+export var min_throw_strength : float = 100.0
+export var hold_increase : float = 300
 
-func _input(event):
+onready var throw_strength = min_throw_strength
+
+
+func _process(delta):
 	if not player.get_node("RingSelection").visible:
-		if event is InputEventMouseButton:
-			if event.button_index == BUTTON_LEFT and event.pressed:
-				if not ball_instance:
-					instantiate_ball(event.position)
-				else:
-					return_ball()
+		if Input.is_mouse_button_pressed(1):
+			if ball_instance:
+				return_ball()
+			else:
+				
+				throw_strength += hold_increase * delta
+				throw_strength = clamp(throw_strength, min_throw_strength, max_throw_strength)
+			
+		if Input.is_action_just_released("left_click"):
+			if not ball_instance:
+				instantiate_ball(get_viewport().get_mouse_position())
+			throw_strength = min_throw_strength
 
 func instantiate_ball(var goalPosition : Vector2):
 	ball_instance = ball.instance()
