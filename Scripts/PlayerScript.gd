@@ -4,6 +4,7 @@ class_name Player
 # onready
 onready var CoyoteTimer : Timer = $CoyoteTimer
 onready var dog : KinematicBody2D = get_node("/root/Main/Dog")
+onready var animationPlayer : AnimationPlayer = get_node("./CharacterRig/AnimationPlayer")
 
 # constants
 const UP_DIRECTION : Vector2 = Vector2.UP
@@ -76,6 +77,20 @@ func _process(delta):
 		$RingSelection.visible = true
 	else:
 		$RingSelection.visible = false
+	
+	var scaleX = animationPlayer.get_parent().get_scale().x
+	
+	if sign(_velocity.x) < 0:
+		scaleX = abs(animationPlayer.get_parent().get_scale().x)
+	elif sign(_velocity.x) > 0:
+		scaleX = -abs(animationPlayer.get_parent().get_scale().x)
+		
+	animationPlayer.get_parent().set_scale(Vector2(scaleX, animationPlayer.get_parent().get_scale().y))
+	
+	if _velocity.is_equal_approx(Vector2.ZERO):
+		animationPlayer.play("idle")
+	else:
+		animationPlayer.play("walk", 0.15)
 		
 
 

@@ -6,7 +6,7 @@
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 18.0
-height = 54.0
+height = 50.5647
 
 [node name="Player" type="KinematicBody2D"]
 collision_mask = 3
