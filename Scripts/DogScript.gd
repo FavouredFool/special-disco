@@ -4,6 +4,7 @@ class_name Dog
 signal push_player
 
 onready var ChangeDirectionTimer : Timer = $ChangeDirectionTimer
+onready var ballSpawner : BallSpawner = get_node("/root/Main/BallSpawner")
 
 const UP_DIRECTION : Vector2 = Vector2.UP
 
@@ -15,9 +16,14 @@ var _velocity : Vector2 = Vector2.ZERO
 
 func _physics_process(delta:float) -> void:
 	
-	_velocity.x = _direction.x * speed
+	if ballSpawner.ball_instance:
+		var right = sign(ballSpawner.ball_instance.position.x - position.x)
+		
+		_velocity.x = right * speed
+	else:
+		_velocity.x = 0.0
+	
+	
 	_velocity.y += gravity * delta
+	
 	_velocity = move_and_slide(_velocity)
-
-func _on_ChangeDirectionTimer_timeout():
-	_direction = -_direction

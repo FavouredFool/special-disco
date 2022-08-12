@@ -1,4 +1,5 @@
 extends Node2D
+class_name BallSpawner
 
 onready var player : Player = get_node("/root/Main/Player")
 

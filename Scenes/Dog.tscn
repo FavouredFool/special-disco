@@ -19,8 +19,3 @@ texture = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
-
-[node name="ChangeDirectionTimer" type="Timer" parent="."]
-autostart = true
-
-[connection signal="timeout" from="ChangeDirectionTimer" to="." method="_on_ChangeDirectionTimer_timeout"]

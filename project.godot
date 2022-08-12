@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Node2D",
+"class": "BallSpawner",
+"language": "GDScript",
+"path": "res://Scripts/BallSpawner.gd"
+}, {
 "base": "KinematicBody2D",
 "class": "Dog",
 "language": "GDScript",
@@ -20,6 +25,7 @@ _global_script_classes=[ {
 "path": "res://Scripts/PlayerScript.gd"
 } ]
 _global_script_class_icons={
+"BallSpawner": "",
 "Dog": "",
 "Player": ""
 }
