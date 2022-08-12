@@ -41,6 +41,7 @@ position = Vector2( 185, 374 )
 [node name="Dog" parent="." instance=ExtResource( 4 )]
 position = Vector2( 275, 385 )
 ball_margin = 15.0
+_swap_offset = 15.0
 
 [node name="TileMap" type="TileMap" parent="." groups=["EnvCollider"]]
 tile_set = SubResource( 1 )

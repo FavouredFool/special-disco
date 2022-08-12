@@ -11,11 +11,14 @@ export var speed : float = 400.0
 export var jump_strength: float = 1000
 export var gravity : float = 4500.0
 export var ball_margin : float = 5.0
+export var _swap_offset : float = 5.0
 
 var _direction : Vector2 = Vector2.RIGHT
 var _velocity : Vector2 = Vector2.ZERO
 var _desires_jump : bool
 var _jump_avaliable : bool
+var right = 1
+
 
 func _physics_process(delta:float) -> void:
 	
@@ -25,9 +28,15 @@ func _physics_process(delta:float) -> void:
 	if ballSpawner.ball_instance:
 		# determine x-direction
 		var distance_from_ball : float = (ballSpawner.ball_instance.position - position).length()
-		var right
+		
 		if (distance_from_ball > ball_margin):
-			right = sign(ballSpawner.ball_instance.position.x - position.x)
+			if right == 1:
+				right = sign(ballSpawner.ball_instance.position.x - position.x + _swap_offset)
+			elif right == -1:
+				right = sign(ballSpawner.ball_instance.position.x - position.x - _swap_offset)
+			else:
+				right = sign(ballSpawner.ball_instance.position.x - position.x)
+			
 		else:
 			right = 0
 		
