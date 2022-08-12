@@ -18,10 +18,16 @@ _global_script_classes=[ {
 "class": "Dog",
 "language": "GDScript",
 "path": "res://Scripts/DogScript.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "Player",
+"language": "GDScript",
+"path": "res://Scripts/PlayerScript.gd"
 } ]
 _global_script_class_icons={
 "BallSpawner": "",
-"Dog": ""
+"Dog": "",
+"Player": ""
 }
 
 [application]
