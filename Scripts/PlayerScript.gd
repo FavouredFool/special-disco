@@ -3,6 +3,7 @@ class_name Player
 
 # onready
 onready var CoyoteTimer : Timer = $CoyoteTimer
+onready var dog : KinematicBody2D = get_node("/root/Main/Dog")
 
 # constants
 const UP_DIRECTION : Vector2 = Vector2.UP
@@ -20,6 +21,49 @@ var _desires_jump : bool
 
 var _ballSpawnPoint : Vector2 = Vector2.ZERO
 
+func _input(event):
+	if event is InputEventMouseButton:
+		if event.button_index == BUTTON_LEFT and event.pressed:
+			
+			if $RingSelection.visible:
+				# ring selection logic
+				
+				var mouse_position = get_viewport().get_mouse_position()
+				
+				var direction : Vector2 = mouse_position - position
+				
+				var angle = Vector2.UP.angle_to(direction)
+				
+				if angle > 0.0:
+					#positive angles
+					if angle < PI/4:
+						# feature top
+						print("TOP")
+						dog.active_command = dog.ActiveCommand.STAY
+					elif angle < 3*PI/4:
+						# feature right
+						print("RIGHT")
+						dog.first_come_frame = true
+						dog.active_command = dog.ActiveCommand.COME
+					else:
+						# feature down
+						print("DOWN")
+						dog.active_command = dog.ActiveCommand.DROP_PICKUP
+						
+				elif angle < 0.0:
+					if angle > -PI/4:
+						# feature top
+						print("TOP")
+						dog.active_command = dog.ActiveCommand.STAY
+					elif angle > -3*PI/4:
+						# feature left
+						print("LEFT")
+						dog.active_command = dog.ActiveCommand.FETCH
+					else:
+						# feature down
+						print("DOWN")
+						dog.active_command = dog.ActiveCommand.DROP_PICKUP
+
 func _process(delta):
 	_horizontal_direction = (
 		Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
@@ -27,6 +71,13 @@ func _process(delta):
 	
 	if not _desires_jump:
 		_desires_jump = Input.is_action_just_pressed("jump") and _jump_avaliable
+		
+	if Input.is_mouse_button_pressed(2):
+		$RingSelection.visible = true
+	else:
+		$RingSelection.visible = false
+		
+
 
 
 func _physics_process(delta:float) -> void:
