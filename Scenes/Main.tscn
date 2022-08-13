@@ -5,8 +5,8 @@
 
 [node name="Main" type="Node"]
 
-[node name="Level_X" parent="." instance=ExtResource( 1 )]
-
 [node name="LevelBg" type="Sprite" parent="."]
-position = Vector2( 538, 271 )
+position = Vector2( 640, 342 )
 texture = ExtResource( 2 )
+
+[node name="Level_X" parent="." instance=ExtResource( 1 )]
