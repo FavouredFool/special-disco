@@ -4,20 +4,23 @@
 [ext_resource path="res://Scenes/DogRig.tscn" type="PackedScene" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 22.0001, 20.9999 )
+extents = Vector2( 28.5, 24.4999 )
 
 [node name="Dog" type="KinematicBody2D" groups=["dog"]]
 collision_layer = 4
 collision_mask = 3
 collision/safe_margin = 1.0
 script = ExtResource( 2 )
-speed = 100.0
-jump_strength = 1200.0
+speed = 300.0
+jump_strength = 1100.0
+gravity = 3500.0
+ball_margin = 50.0
+_swap_offset = 25.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -4.76837e-07, -2 )
+position = Vector2( -3.49999, -1.49996 )
 rotation = 1.5708
 shape = SubResource( 1 )
 
 [node name="DogRig" parent="." instance=ExtResource( 3 )]
-scale = Vector2( 0.104291, 0.104291 )
+scale = Vector2( 0.14, 0.14 )

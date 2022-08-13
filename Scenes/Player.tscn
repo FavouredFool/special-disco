@@ -5,13 +5,16 @@
 [ext_resource path="res://Scenes/BoyRig.tscn" type="PackedScene" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 14.2854, 43.7742 )
+extents = Vector2( 20.6345, 50.6601 )
 
 [node name="Player" type="KinematicBody2D"]
 collision_mask = 3
 collision/safe_margin = 1.0
 script = ExtResource( 2 )
-jump_strength = 800.0
+speed = 150.0
+jump_strength = 900.0
+gravity = 3500.0
+bounce_multiplicator = 1.1
 
 [node name="RingSelection" type="Sprite" parent="."]
 visible = false
@@ -25,11 +28,11 @@ wait_time = 0.1
 one_shot = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -1.5, -1.49999 )
+position = Vector2( -1.5, -0.500002 )
 scale = Vector2( 0.945018, 1.01658 )
 shape = SubResource( 1 )
 
 [node name="CharacterRig" parent="." instance=ExtResource( 4 )]
-scale = Vector2( 0.12, 0.12 )
+scale = Vector2( 0.14, 0.14 )
 
 [connection signal="timeout" from="CoyoteTimer" to="." method="_on_Timer_timeout"]

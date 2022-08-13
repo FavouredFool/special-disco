@@ -106,6 +106,7 @@ func _physics_process(delta:float) -> void:
 		if collision.collider.is_in_group("dog"):
 			if collision.normal == Vector2.UP:
 				desires_bounce = true
+				_desires_jump = false
 	
 	_velocity.x = _horizontal_direction * speed
 	
