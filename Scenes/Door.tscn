@@ -14,6 +14,14 @@ margin_top = -60.0
 margin_right = 25.0
 margin_bottom = 60.0
 
+[node name="ColorRect2" type="ColorRect" parent="."]
+visible = false
+margin_left = -18.0
+margin_top = -53.0
+margin_right = 18.0
+margin_bottom = 53.0
+color = Color( 0, 0, 0, 1 )
+
 [node name="StaticBody2D" type="StaticBody2D" parent="." groups=["EnvCollider"]]
 position = Vector2( -2, 0 )
 collision_layer = 2

@@ -15,6 +15,7 @@ export var gravity : float = 4500.0
 export var ball_margin : float = 5.0
 
 export var _swap_offset : float = 5.0
+export var max_pickup_distance : float = 100.0
 var player_min_margin : float = 70.0
 var player_max_margin : float = 170.0
 
@@ -24,10 +25,12 @@ var _velocity : Vector2 = Vector2.ZERO
 var _desires_jump : bool
 var _jump_avaliable : bool
 var right = 1
-enum ActiveCommand { STAY, COME, FETCH, POOP, SPEAK, DROP_PICKUP }
+enum ActiveCommand { STAY, COME, FETCH, SPEAK, DROP_PICKUP }
 var active_command = ActiveCommand.STAY
 
 var last_command = ActiveCommand.STAY
+
+var item_holding = null
 
 # come
 var come_to_player : bool = false
@@ -36,12 +39,18 @@ var first_command_frame : bool = false
 func _process(delta):
 	var scaleX = animationPlayer.get_parent().get_scale().x
 	
+	var pickup_position = $PickupPosition
+	var pointPos = pickup_position.position.x
+	
 	if sign(_velocity.x) > 0:
-		scaleX = abs(animationPlayer.get_parent().get_scale().x)
+		scaleX = abs(scaleX)
+		pointPos = abs(pointPos)
 	elif sign(_velocity.x) < 0:
-		scaleX = -abs(animationPlayer.get_parent().get_scale().x)
+		scaleX = -abs(scaleX)
+		pointPos = -abs(pointPos)
 		
 	animationPlayer.get_parent().set_scale(Vector2(scaleX, animationPlayer.get_parent().get_scale().y))
+	pickup_position.set_position(Vector2(pointPos, pickup_position.position.y))
 	
 	var is_falling : bool = _velocity.y > 0.0 and not is_on_floor()
 
@@ -68,8 +77,6 @@ func _physics_process(delta:float) -> void:
 			command_drop_pickup()
 		ActiveCommand.SPEAK:
 			command_speak()
-		ActiveCommand.POOP:
-			command_poop()
 			
 	first_command_frame = false
 	
@@ -161,18 +168,34 @@ func command_fetch():
 		set_active_dog_command(last_command)
 	
 func command_drop_pickup():
-	# drop / pickup
-	set_active_dog_command(ActiveCommand.STAY)
+	print(item_holding)
+	if item_holding:
+		item_holding.dropped()
+		item_holding = null
+	else:
+		# pickup
+		var my_group_members = get_tree().get_nodes_in_group("pickupable")
+		var min_item
+		var min_distance = INF
+		for pickupable in my_group_members:
+			var item = pickupable
+			var distance = (position - item.position).length()
+			
+			if distance < min_distance and distance < max_pickup_distance:
+				min_distance = distance
+				min_item = item
+				
+		if min_item:
+			# min_item should be picked up
+			min_item.picked_up()
+			item_holding = min_item
+	
+	set_active_dog_command(last_command)
 
 func command_speak():
 	# speak
 	set_active_dog_command(ActiveCommand.STAY)
-	
-func command_poop():
-	# poop
-	set_active_dog_command(ActiveCommand.STAY)
 
-	
 func set_active_dog_command(dog_command):
 	last_command = active_command
 	first_command_frame = true

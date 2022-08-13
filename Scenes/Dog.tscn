@@ -16,6 +16,7 @@ jump_strength = 1100.0
 gravity = 3500.0
 ball_margin = 25.0
 _swap_offset = 25.0
+max_pickup_distance = 70.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( -3.49999, -1.49996 )
@@ -24,3 +25,6 @@ shape = SubResource( 1 )
 
 [node name="DogRig" parent="." instance=ExtResource( 3 )]
 scale = Vector2( 0.14, 0.14 )
+
+[node name="PickupPosition" type="Position2D" parent="."]
+position = Vector2( 16, -4 )

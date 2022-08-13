@@ -32,6 +32,7 @@ func _process(delta):
 func instantiate_ball(var goalPosition : Vector2):
 	ball_instance = ball.instance()
 	add_child(ball_instance)
+	ball_instance.add_to_group("pickupable")
 	ball_instance.position = player.get_position()
 	
 	throw_ball(ball_instance, player.get_position(), goalPosition)
