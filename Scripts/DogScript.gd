@@ -55,7 +55,7 @@ func _process(delta):
 	
 	var is_falling : bool = _velocity.y > 0.0 and not is_on_floor()
 
-	if is_on_floor():
+	if is_on_floor() and not animationPlayer.current_animation == "pickupanddrop":
 		if _velocity.x == 0:
 			animationPlayer.play("idle")
 		else:
@@ -169,8 +169,11 @@ func command_fetch():
 		set_active_dog_command(last_command)
 	
 func command_drop_pickup():
-	print(item_holding)
+	
+	
+	
 	if item_holding:
+		animationPlayer.play("pickupanddrop", 0, 1.2)
 		item_holding.dropped()
 		item_holding = null
 		ballSpawner.instantiate_ball_for_dog($PickupPosition.global_position)
@@ -188,6 +191,7 @@ func command_drop_pickup():
 				min_item = item
 				
 		if min_item:
+			animationPlayer.play("pickupanddrop", 0, 1.5)
 			# min_item should be picked up
 			min_item.picked_up()
 			item_holding = min_item
