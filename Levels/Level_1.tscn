@@ -52,7 +52,7 @@ outlines = [ PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 ) ]
 1/shapes = [  ]
 1/z_index = 0
 
-[node name="Level_Y" type="Node2D"]
+[node name="Level_1" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="." groups=["EnvCollider"]]
 scale = Vector2( 4, 4 )
