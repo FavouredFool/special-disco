@@ -90,14 +90,13 @@ func _process(delta):
 	animationPlayer.get_parent().set_scale(Vector2(scaleX, animationPlayer.get_parent().get_scale().y))
 	
 	#if _velocity.is_equal_approx(Vector2.ZERO):
-	if _velocity.x == 0:
-		animationPlayer.play("idle")
-	else:
-		animationPlayer.play("walk", 0.15)
+	if not animationPlayer.current_animation == "throw":
+		if _velocity.x == 0:
+			animationPlayer.play("idle")
+		else:
+			animationPlayer.play("walk", 0.15)
 		
-
-
-
+		
 func _physics_process(delta:float) -> void:
 	
 	# determine if jump

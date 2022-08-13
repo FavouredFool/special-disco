@@ -42,6 +42,7 @@ func return_ball():
 	ball_instance = null
 
 func throw_ball(ball : RigidBody2D, startPosition, goalPosition):
+	player.get_node("CharacterRig/AnimationPlayer").play("throw")
 	var forceDirection = (goalPosition - startPosition).normalized() * throw_strength
 	ball.apply_impulse(Vector2.ZERO, forceDirection)
 	
