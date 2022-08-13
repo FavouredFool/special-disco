@@ -68,8 +68,6 @@ position = Vector2( 138, 338 )
 speed = 150.0
 
 [node name="BallSpawner" parent="." instance=ExtResource( 2 )]
-max_throw_strength = 1000.0
-min_throw_strength = 500.0
 
 [node name="Dog" parent="." instance=ExtResource( 3 )]
 position = Vector2( 328, 365 )
