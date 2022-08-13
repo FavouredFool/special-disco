@@ -14,7 +14,7 @@ script = ExtResource( 2 )
 speed = 300.0
 jump_strength = 1100.0
 gravity = 3500.0
-ball_margin = 50.0
+ball_margin = 25.0
 _swap_offset = 25.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
