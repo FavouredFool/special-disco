@@ -153,7 +153,7 @@ func command_fetch():
 				right = sign(ballSpawner.ball_instance.position.x - position.x)
 			
 		else:
-			right = 0
+			set_active_dog_command(ActiveCommand.STAY)
 		
 		_velocity.x = right * speed
 		
