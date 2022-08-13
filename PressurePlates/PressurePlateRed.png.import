@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/PressurePlateBluePressed.png-d626133e723db529b74fc20c3e98431c.stex"
+path="res://.import/PressurePlateRed.png-a367294f1fc5c5429e409afa9911b3b4.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://PressurePlateBluePressed.png"
-dest_files=[ "res://.import/PressurePlateBluePressed.png-d626133e723db529b74fc20c3e98431c.stex" ]
+source_file="res://PressurePlates/PressurePlateRed.png"
+dest_files=[ "res://.import/PressurePlateRed.png-a367294f1fc5c5429e409afa9911b3b4.stex" ]
 
 [params]
 

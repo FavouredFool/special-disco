@@ -1,17 +1,13 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://Scripts/ButtonScript.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/ButtonScriptGreen.gd" type="Script" id=1]
+[ext_resource path="res://PressurePlates/PressurePlateGreen.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 20, 5 )
 
 [node name="Button" type="Node2D"]
 script = ExtResource( 1 )
-
-[node name="ColorRect" type="ColorRect" parent="."]
-margin_left = -20.0
-margin_top = -10.0
-margin_right = 20.0
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 0
@@ -20,3 +16,7 @@ collision_mask = 5
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2( 0, -5 )
 shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 0.14, 0.14 )
+texture = ExtResource( 2 )

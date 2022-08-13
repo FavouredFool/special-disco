@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://Scripts/DoorScript.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/DoorBlueScript.gd" type="Script" id=1]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 5.68553, 8.38265 )
@@ -13,6 +13,7 @@ margin_left = -25.0
 margin_top = -60.0
 margin_right = 25.0
 margin_bottom = 60.0
+color = Color( 0, 0.227451, 1, 1 )
 
 [node name="ColorRect2" type="ColorRect" parent="."]
 visible = false

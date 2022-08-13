@@ -4,8 +4,9 @@
 [ext_resource path="res://Scenes/BallSpawner.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Dog.tscn" type="PackedScene" id=3]
 [ext_resource path="res://TilemapForeground.png" type="Texture" id=4]
-[ext_resource path="res://Scenes/Door.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Scenes/Button.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/DoorRed.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/ButtonGreen.tscn" type="PackedScene" id=6]
+
 
 [sub_resource type="ConvexPolygonShape2D" id=2]
 points = PoolVector2Array( 0, 0, 128, 0, 128, 128, 0, 128 )
