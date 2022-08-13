@@ -78,10 +78,10 @@ _swap_offset = 15.0
 [node name="BallSpawner" parent="." instance=ExtResource( 2 )]
 
 [node name="Door" parent="." instance=ExtResource( 5 )]
-position = Vector2( 416, 451 )
+position = Vector2( 926, 322 )
 
 [node name="Button" parent="." instance=ExtResource( 6 )]
-position = Vector2( 159, 448 )
+position = Vector2( 856, 381 )
 
 [connection signal="button_pressed" from="Button" to="Door" method="_on_Button_button_pressed"]
 [connection signal="button_released" from="Button" to="Door" method="_on_Button_button_released"]

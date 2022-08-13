@@ -5,6 +5,7 @@ signal push_player
 
 onready var ballSpawner : BallSpawner = get_node("../BallSpawner")
 onready var player : KinematicBody2D = get_node("../Player")
+onready var animationPlayer : AnimationPlayer = get_node("./DogRig/AnimationPlayer")
 
 const UP_DIRECTION : Vector2 = Vector2.UP
 
@@ -32,6 +33,25 @@ var last_command = ActiveCommand.STAY
 var come_to_player : bool = false
 var first_command_frame : bool = false
 
+func _process(delta):
+	var scaleX = animationPlayer.get_parent().get_scale().x
+	
+	if sign(_velocity.x) > 0:
+		scaleX = abs(animationPlayer.get_parent().get_scale().x)
+	elif sign(_velocity.x) < 0:
+		scaleX = -abs(animationPlayer.get_parent().get_scale().x)
+		
+	animationPlayer.get_parent().set_scale(Vector2(scaleX, animationPlayer.get_parent().get_scale().y))
+	
+	var is_falling : bool = _velocity.y > 0.0 and not is_on_floor()
+
+	if is_on_floor():
+		if _velocity.x == 0:
+			animationPlayer.play("idle")
+		else:
+			animationPlayer.play("walk", 0.15)
+			
+
 func _physics_process(delta:float) -> void:
 	
 	if is_on_floor():
@@ -56,12 +76,13 @@ func _physics_process(delta:float) -> void:
 
 	# Jump
 	if _desires_jump:
+		animationPlayer.play("jump", 0.15, 2.0)
 		_velocity.y = -jump_strength
 		_desires_jump = false
 
 	_velocity.y += gravity * delta
 	
-	_velocity = move_and_slide(_velocity)
+	_velocity = move_and_slide(_velocity, Vector2.UP)
 
 
 func command_stay():
