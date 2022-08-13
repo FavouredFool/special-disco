@@ -6,6 +6,13 @@ onready var CoyoteTimer : Timer = $CoyoteTimer
 onready var dog = get_node("../Dog")
 onready var animationPlayer : AnimationPlayer = get_node("./CharacterRig/AnimationPlayer")
 
+var cwNone = preload("res://CommandWheel/CommandWheelnonedrop.png")
+var cwStay = preload("res://CommandWheel/CommandWheelstay.png")
+var cwDrop = preload("res://CommandWheel/CommandWheeldrop.png")
+var cwFetch = preload("res://CommandWheel/CommandWheelfetch.png")
+var cwBark = preload("res://CommandWheel/CommandWheelbark.png")
+var cwCome = preload("res://CommandWheel/CommandWheelcome.png")
+
 # constants
 const UP_DIRECTION : Vector2 = Vector2.UP
 
@@ -75,10 +82,40 @@ func _process(delta):
 	if not _desires_jump:
 		_desires_jump = Input.is_action_just_pressed("jump") and _jump_avaliable
 		
+		
+	# ring selection
 	if Input.is_mouse_button_pressed(2):
 		$RingSelection.visible = true
 	else:
 		$RingSelection.visible = false
+		
+	if $RingSelection.visible:
+			# ring selection logic
+			var mouse_position = get_viewport().get_mouse_position()
+			var direction : Vector2 = mouse_position - $RingSelection.global_position
+			var angle = Vector2.UP.angle_to(direction)
+			
+			if angle > 0.0:
+				if angle < PI * 0.14:
+					$RingSelection.texture = cwCome
+				elif angle < PI * 0.42:
+					$RingSelection.texture = cwStay
+				elif angle < PI * 0.7:
+					$RingSelection.texture = cwDrop
+				else:
+					$RingSelection.texture = cwNone
+					
+			elif angle < 0.0:
+				if angle > -PI * 0.14:
+					$RingSelection.texture = cwCome
+				elif angle > -PI * 0.42:
+					$RingSelection.texture = cwFetch
+				elif angle > -PI * 0.7:
+					$RingSelection.texture = cwBark
+				else:
+					$RingSelection.texture = cwNone
+	
+		
 	
 	var scaleX = animationPlayer.get_parent().get_scale().x
 	

@@ -1324,6 +1324,7 @@ tracks/17/keys = {
 }
 
 [node name="DogRig" type="Node2D"]
+z_index = 2
 
 [node name="UpperBody" type="Sprite" parent="."]
 z_index = 1
@@ -1348,7 +1349,7 @@ region_rect = Rect2( 18.2079, 12.3349, 282.38, 235.726 )
 
 [node name="Ear" type="Sprite" parent="."]
 position = Vector2( -37, -203 )
-z_index = 3
+z_index = 2
 texture = ExtResource( 1 )
 offset = Vector2( -18, 51 )
 region_enabled = true
