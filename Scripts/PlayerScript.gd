@@ -12,6 +12,12 @@ var cwDrop = preload("res://CommandWheel/CommandWheeldrop.png")
 var cwFetch = preload("res://CommandWheel/CommandWheelfetch.png")
 var cwBark = preload("res://CommandWheel/CommandWheelbark.png")
 var cwCome = preload("res://CommandWheel/CommandWheelcome.png")
+var cwComePickup = preload("res://CommandWheel/CommandWheelcomepickup.png")
+var cwBarkPickup = preload("res://CommandWheel/CommandWheelbarkpickup.png")
+var cwFetchPickup = preload("res://CommandWheel/CommandWheelfetchpickup.png")
+var cwStayPickup = preload("res://CommandWheel/CommandWheelstaypickup.png")
+var cwPickup = preload("res://CommandWheel/CommandWheelpickup.png")
+var cwNonePickup = preload("res://CommandWheel/CommandWheelnone.png")
 
 # constants
 const UP_DIRECTION : Vector2 = Vector2.UP
@@ -47,32 +53,20 @@ func _input(event):
 				
 				if angle > 0.0:
 					#positive angles
-					if angle < PI/4:
-						# feature top
-						print("TOP")
-						dog.set_active_dog_command(dog.ActiveCommand.STAY)
-					elif angle < 3*PI/4:
-						# feature right
-						print("RIGHT")
+					if angle < PI * 0.14:
 						dog.set_active_dog_command(dog.ActiveCommand.COME)
-					else:
-						# feature down
-						print("DOWN")
+					elif angle < PI * 0.42:
+						dog.set_active_dog_command(dog.ActiveCommand.STAY)
+					elif angle < PI * 0.7:
 						dog.set_active_dog_command(dog.ActiveCommand.DROP_PICKUP)
 						
 				elif angle < 0.0:
-					if angle > -PI/4:
-						# feature top
-						print("TOP")
-						dog.set_active_dog_command(dog.ActiveCommand.STAY)
-					elif angle > -3*PI/4:
-						# feature left
-						print("LEFT")
+					if angle > PI * -0.14:
+						dog.set_active_dog_command(dog.ActiveCommand.COME)
+					elif angle > PI * -0.42:
 						dog.set_active_dog_command(dog.ActiveCommand.FETCH)
-					else:
-						# feature down
-						print("DOWN")
-						dog.set_active_dog_command(dog.ActiveCommand.DROP_PICKUP)
+					elif angle > PI * -0.7:
+						dog.set_active_dog_command(dog.ActiveCommand.BARK)
 
 func _process(delta):
 	_horizontal_direction = (
@@ -94,26 +88,50 @@ func _process(delta):
 			var mouse_position = get_viewport().get_mouse_position()
 			var direction : Vector2 = mouse_position - $RingSelection.global_position
 			var angle = Vector2.UP.angle_to(direction)
-			
+
 			if angle > 0.0:
 				if angle < PI * 0.14:
-					$RingSelection.texture = cwCome
+					if dog.item_holding:
+						$RingSelection.texture = cwCome
+					else:
+						$RingSelection.texture = cwComePickup
 				elif angle < PI * 0.42:
-					$RingSelection.texture = cwStay
+					if dog.item_holding:
+						$RingSelection.texture = cwStay
+					else:
+						$RingSelection.texture = cwStayPickup
 				elif angle < PI * 0.7:
-					$RingSelection.texture = cwDrop
+					if dog.item_holding:
+						$RingSelection.texture = cwDrop
+					else:
+						$RingSelection.texture = cwPickup
 				else:
-					$RingSelection.texture = cwNone
+					if dog.item_holding:
+						$RingSelection.texture = cwNone
+					else:
+						$RingSelection.texture = cwNonePickup
 					
 			elif angle < 0.0:
 				if angle > -PI * 0.14:
-					$RingSelection.texture = cwCome
+					if dog.item_holding:
+						$RingSelection.texture = cwCome
+					else:
+						$RingSelection.texture = cwComePickup
 				elif angle > -PI * 0.42:
-					$RingSelection.texture = cwFetch
+					if dog.item_holding:
+						$RingSelection.texture = cwFetch
+					else:
+						$RingSelection.texture = cwFetchPickup
 				elif angle > -PI * 0.7:
-					$RingSelection.texture = cwBark
+					if dog.item_holding:
+						$RingSelection.texture = cwBark
+					else:
+						$RingSelection.texture = cwBarkPickup
 				else:
-					$RingSelection.texture = cwNone
+					if dog.item_holding:
+						$RingSelection.texture = cwNone
+					else:
+						$RingSelection.texture = cwNonePickup
 	
 		
 	

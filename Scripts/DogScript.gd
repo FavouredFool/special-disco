@@ -170,8 +170,6 @@ func command_fetch():
 	
 func command_drop_pickup():
 	
-	
-	
 	if item_holding:
 		animationPlayer.play("pickupanddrop", 0, 1.2)
 		item_holding.dropped()

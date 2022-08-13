@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/CommandWheelfetchpickup.png-de417b52f7df4700a545ec2a91a8afc8.stex"
+path="res://.import/CommandWheelbarkpickup.png-4cba44e80594e419c3f18df672a8b513.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://CommandWheelfetchpickup.png"
-dest_files=[ "res://.import/CommandWheelfetchpickup.png-de417b52f7df4700a545ec2a91a8afc8.stex" ]
+source_file="res://CommandWheel/CommandWheelbarkpickup.png"
+dest_files=[ "res://.import/CommandWheelbarkpickup.png-4cba44e80594e419c3f18df672a8b513.stex" ]
 
 [params]
 
