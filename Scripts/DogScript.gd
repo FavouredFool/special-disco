@@ -7,6 +7,7 @@ onready var ballSpawner : BallSpawner = get_node("../BallSpawner")
 onready var player : KinematicBody2D = get_node("../Player")
 onready var animationPlayer : AnimationPlayer = get_node("./DogRig/AnimationPlayer")
 
+
 const UP_DIRECTION : Vector2 = Vector2.UP
 
 export var speed : float = 400.0
@@ -172,6 +173,7 @@ func command_drop_pickup():
 	if item_holding:
 		item_holding.dropped()
 		item_holding = null
+		ballSpawner.instantiate_ball_for_dog($PickupPosition.global_position)
 	else:
 		# pickup
 		var my_group_members = get_tree().get_nodes_in_group("pickupable")

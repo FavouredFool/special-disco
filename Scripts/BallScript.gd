@@ -12,8 +12,7 @@ func picked_up():
 	prev_picked_up = true
 
 func dropped():
-	picked_up = false
-	apply_impulse(Vector2.ZERO, Vector2(0, 0))
+	queue_free()
 
 func _physics_process(delta):
 	if picked_up:

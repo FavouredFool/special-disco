@@ -44,3 +44,9 @@ func return_ball():
 func throw_ball(ball : RigidBody2D, startPosition, goalPosition):
 	var forceDirection = (goalPosition - startPosition).normalized() * throw_strength
 	ball.apply_impulse(Vector2.ZERO, forceDirection)
+	
+func instantiate_ball_for_dog(var position : Vector2):
+	ball_instance = ball.instance()
+	add_child(ball_instance)
+	ball_instance.add_to_group("pickupable")
+	ball_instance.position = position
