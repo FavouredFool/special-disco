@@ -1,7 +1,7 @@
 extends Node2D
 class_name BallSpawner
 
-onready var player = get_node("/root/Main/Player")
+onready var player = get_node("../Player")
 
 # Ball
 var ball : PackedScene = preload("res://Scenes/Ball.tscn")

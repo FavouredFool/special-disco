@@ -3,8 +3,8 @@ class_name Dog
 
 signal push_player
 
-onready var ballSpawner : BallSpawner = get_node("/root/Main/BallSpawner")
-onready var player : KinematicBody2D = get_node("/root/Main/Player")
+onready var ballSpawner : BallSpawner = get_node("../BallSpawner")
+onready var player : KinematicBody2D = get_node("../Player")
 
 const UP_DIRECTION : Vector2 = Vector2.UP
 

@@ -3,7 +3,7 @@ class_name Player
 
 # onready
 onready var CoyoteTimer : Timer = $CoyoteTimer
-onready var dog : KinematicBody2D = get_node("/root/Main/Dog")
+onready var dog : KinematicBody2D = get_node("../Dog")
 onready var animationPlayer : AnimationPlayer = get_node("./CharacterRig/AnimationPlayer")
 
 # constants

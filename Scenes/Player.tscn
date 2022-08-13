@@ -5,7 +5,7 @@
 [ext_resource path="res://Scenes/BoyRig.tscn" type="PackedScene" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 14.2854, 44.7579 )
+extents = Vector2( 14.2854, 43.7742 )
 
 [node name="Player" type="KinematicBody2D"]
 collision_mask = 3
@@ -23,7 +23,7 @@ wait_time = 0.1
 one_shot = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -1.5, -0.5 )
+position = Vector2( -1.5, -1.49999 )
 scale = Vector2( 0.945018, 1.01658 )
 shape = SubResource( 1 )
 
