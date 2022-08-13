@@ -65,14 +65,9 @@ tile_data = PoolIntArray( 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 
 
 [node name="Player" parent="." groups=["player"] instance=ExtResource( 1 )]
 position = Vector2( 124, 481 )
-speed = 150.0
 
 [node name="BallSpawner" parent="." instance=ExtResource( 2 )]
-max_throw_strength = 1000.0
 min_throw_strength = 500.0
 
 [node name="Dog" parent="." instance=ExtResource( 3 )]
 position = Vector2( 116, 173 )
-speed = 250.0
-ball_margin = 15.0
-_swap_offset = 15.0

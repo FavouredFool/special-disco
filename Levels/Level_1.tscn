@@ -72,5 +72,3 @@ min_throw_strength = 500.0
 [node name="Dog" parent="." instance=ExtResource( 3 )]
 position = Vector2( 675, 484 )
 speed = 250.0
-ball_margin = 15.0
-_swap_offset = 15.0

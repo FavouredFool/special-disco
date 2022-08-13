@@ -65,12 +65,8 @@ tile_data = PoolIntArray( 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 
 
 [node name="Player" parent="." groups=["player"] instance=ExtResource( 1 )]
 position = Vector2( 138, 338 )
-speed = 150.0
 
 [node name="BallSpawner" parent="." instance=ExtResource( 2 )]
 
 [node name="Dog" parent="." instance=ExtResource( 3 )]
 position = Vector2( 328, 365 )
-speed = 250.0
-ball_margin = 15.0
-_swap_offset = 15.0

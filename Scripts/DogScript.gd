@@ -96,13 +96,14 @@ func command_come():
 	
 	if player:
 		# determine x-direction
-		var distance_from_player : float = (player.position - position).length()
-		#var horizontal_distance_from_player : float = player.position.x - position.x
+		# var distance_from_player : float = (player.position - position).length()
+		var horizontal_distance_from_player : float = player.position.x - position.x
+		horizontal_distance_from_player = abs(horizontal_distance_from_player)
 		
 		if not come_to_player:
-			come_to_player = distance_from_player > player_max_margin
+			come_to_player = horizontal_distance_from_player > player_max_margin
 		
-		if (distance_from_player > player_min_margin and come_to_player):
+		if (horizontal_distance_from_player > player_min_margin and come_to_player):
 			if right == 1:
 				right = sign(player.position.x - position.x + _swap_offset)
 			elif right == -1:
