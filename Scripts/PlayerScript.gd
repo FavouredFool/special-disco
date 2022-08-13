@@ -3,7 +3,7 @@ class_name Player
 
 # onready
 onready var CoyoteTimer : Timer = $CoyoteTimer
-onready var dog : KinematicBody2D = get_node("../Dog")
+onready var dog = get_node("../Dog")
 onready var animationPlayer : AnimationPlayer = get_node("./CharacterRig/AnimationPlayer")
 
 # constants
@@ -13,12 +13,15 @@ const UP_DIRECTION : Vector2 = Vector2.UP
 export var speed : float = 300.0
 export var jump_strength : float = 1000.0
 export var gravity : float = 4500.0
+export var bounce_multiplicator = 1.5
 
 # fields
 var _velocity : Vector2 = Vector2.ZERO
 var _jump_avaliable : bool
 var _horizontal_direction : float
 var _desires_jump : bool
+var desires_bounce = false
+var is_bouncing = false
 
 var _ballSpawnPoint : Vector2 = Vector2.ZERO
 
@@ -40,30 +43,29 @@ func _input(event):
 					if angle < PI/4:
 						# feature top
 						print("TOP")
-						dog.active_command = dog.ActiveCommand.STAY
+						dog.set_active_dog_command(dog.ActiveCommand.STAY)
 					elif angle < 3*PI/4:
 						# feature right
 						print("RIGHT")
-						dog.first_come_frame = true
-						dog.active_command = dog.ActiveCommand.COME
+						dog.set_active_dog_command(dog.ActiveCommand.COME)
 					else:
 						# feature down
 						print("DOWN")
-						dog.active_command = dog.ActiveCommand.DROP_PICKUP
+						dog.set_active_dog_command(dog.ActiveCommand.DROP_PICKUP)
 						
 				elif angle < 0.0:
 					if angle > -PI/4:
 						# feature top
 						print("TOP")
-						dog.active_command = dog.ActiveCommand.STAY
+						dog.set_active_dog_command(dog.ActiveCommand.STAY)
 					elif angle > -3*PI/4:
 						# feature left
 						print("LEFT")
-						dog.active_command = dog.ActiveCommand.FETCH
+						dog.set_active_dog_command(dog.ActiveCommand.FETCH)
 					else:
 						# feature down
 						print("DOWN")
-						dog.active_command = dog.ActiveCommand.DROP_PICKUP
+						dog.set_active_dog_command(dog.ActiveCommand.DROP_PICKUP)
 
 func _process(delta):
 	_horizontal_direction = (
@@ -98,11 +100,19 @@ func _process(delta):
 
 func _physics_process(delta:float) -> void:
 	
+	# determine if jump
+	for i in get_slide_count():
+		var collision = get_slide_collision(i)
+		if collision.collider.is_in_group("dog"):
+			if collision.normal == Vector2.UP:
+				desires_bounce = true
+	
 	_velocity.x = _horizontal_direction * speed
-	_velocity.y += gravity * delta
+	
 	
 	if is_on_floor():
 		_jump_avaliable = true
+		is_bouncing = false
 	elif _jump_avaliable and CoyoteTimer.is_stopped():
 		CoyoteTimer.start()
 	
@@ -112,13 +122,20 @@ func _physics_process(delta:float) -> void:
 	var is_idling : bool = is_on_floor() and is_zero_approx(_velocity.x)
 	var is_running : bool = is_on_floor() and not is_zero_approx(_velocity.x)
 	
-	if _desires_jump:
+	if _desires_jump and not desires_bounce:
 		_velocity.y = -jump_strength
 		_desires_jump = false
-	elif is_jump_cancelled:
+	elif is_jump_cancelled and not is_bouncing:
 		_velocity.y = 0.0
+		
+	if desires_bounce:
+		_velocity.y = -jump_strength * bounce_multiplicator
+		desires_bounce = false
+		is_bouncing = true
 	
+	_velocity.y += gravity * delta
 	_velocity = move_and_slide(_velocity, UP_DIRECTION)
+
 
 func _on_Timer_timeout():
 	_jump_avaliable = false

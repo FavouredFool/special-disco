@@ -4,4 +4,5 @@
 
 [node name="BallSpawner" type="Node2D"]
 script = ExtResource( 1 )
-throw_strength = 750.0
+max_throw_strength = 1000.0
+min_throw_strength = 300.0

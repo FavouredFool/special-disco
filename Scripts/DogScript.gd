@@ -26,9 +26,11 @@ var right = 1
 enum ActiveCommand { STAY, COME, FETCH, POOP, SPEAK, DROP_PICKUP }
 var active_command = ActiveCommand.STAY
 
+var last_command = ActiveCommand.STAY
+
 # come
 var come_to_player : bool = false
-var first_come_frame : bool = false
+var first_command_frame : bool = false
 
 func _physics_process(delta:float) -> void:
 	
@@ -48,6 +50,8 @@ func _physics_process(delta:float) -> void:
 			command_speak()
 		ActiveCommand.POOP:
 			command_poop()
+			
+	first_command_frame = false
 	
 
 	# Jump
@@ -66,7 +70,7 @@ func command_stay():
 
 func command_come():
 	
-	if first_come_frame:
+	if first_command_frame:
 		come_to_player = true
 	
 	if player:
@@ -100,9 +104,9 @@ func command_come():
 
 	else:
 		# stand still
-		command_stay()
+		set_active_dog_command(ActiveCommand.STAY)
 		
-	first_come_frame = false
+	first_command_frame = false
 	
 func command_fetch():
 	
@@ -126,22 +130,28 @@ func command_fetch():
 		# determine if jump
 		for i in get_slide_count():
 			var collision = get_slide_collision(i)
-			if collision.collider.is_in_group("EnvCollider"):
+			if collision.collider.is_in_group("EnvCollider") or collision.collider.is_in_group("player"):
 				if collision.normal == -_velocity.normalized():
 					_desires_jump = true
 
 	else:
 		# stand still
-		command_stay()
+		set_active_dog_command(last_command)
 	
 func command_drop_pickup():
 	# drop / pickup
-	command_stay()
+	set_active_dog_command(ActiveCommand.STAY)
 
 func command_speak():
 	# speak
-	command_stay()
+	set_active_dog_command(ActiveCommand.STAY)
 	
 func command_poop():
 	# poop
-	command_stay()
+	set_active_dog_command(ActiveCommand.STAY)
+
+	
+func set_active_dog_command(dog_command):
+	last_command = active_command
+	first_command_frame = true
+	active_command = dog_command
