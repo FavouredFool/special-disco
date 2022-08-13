@@ -11,10 +11,6 @@ extents = Vector2( 20.6345, 50.6601 )
 collision_mask = 3
 collision/safe_margin = 1.0
 script = ExtResource( 2 )
-speed = 150.0
-jump_strength = 900.0
-gravity = 3500.0
-bounce_multiplicator = 1.1
 
 [node name="RingSelection" type="Sprite" parent="."]
 visible = false
