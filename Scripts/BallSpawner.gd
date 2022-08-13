@@ -14,7 +14,6 @@ export var hold_increase : float = 300
 onready var throw_strength = min_throw_strength
 
 func _draw():
-	print(get_viewport().get_mouse_position())
 	var draw_goal = player.position + (get_viewport().get_mouse_position() - player.position).normalized() * throw_strength / 8
 	
 	draw_set_transform_matrix(transform.inverse())
