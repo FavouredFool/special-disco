@@ -16,7 +16,7 @@ onready var throw_strength = min_throw_strength
 var ball_is_thrown = false
 
 func _draw():
-	if not player.get_node("RingSelection").visible:
+	if not player.get_node("RingSelection").visible && not ball_is_thrown:
 		var draw_goal = player.position + (get_viewport().get_mouse_position() - player.position).normalized() * throw_strength / 8
 		
 		draw_set_transform_matrix(transform.inverse())

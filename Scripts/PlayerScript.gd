@@ -177,7 +177,7 @@ func _physics_process(delta:float) -> void:
 	
 	# Get Key Information
 	var is_falling : bool = _velocity.y > 0.0 and not is_on_floor()
-	var is_jump_cancelled : bool = Input.is_action_just_released("jump") and _velocity.y < 0.0
+	#var is_jump_cancelled : bool = Input.is_action_just_released("jump") and _velocity.y < 0.0
 	var is_idling : bool = is_on_floor() and is_zero_approx(_velocity.x)
 	var is_running : bool = is_on_floor() and not is_zero_approx(_velocity.x)
 	
@@ -185,8 +185,8 @@ func _physics_process(delta:float) -> void:
 		animationPlayer.play("jump", 0, 2)
 		_velocity.y = -jump_strength
 		_desires_jump = false
-	elif is_jump_cancelled and not is_bouncing:
-		_velocity.y = 0.0
+	#elif is_jump_cancelled and not is_bouncing:
+		#_velocity.y = 0.0
 		
 	if desires_bounce:
 		animationPlayer.play("jump", 0, 2)
