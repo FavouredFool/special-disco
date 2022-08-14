@@ -55,18 +55,28 @@ func _input(event):
 					#positive angles
 					if angle < PI * 0.14:
 						dog.set_active_dog_command(dog.ActiveCommand.COME)
+						dog.befehl_counter += 1
+						
 					elif angle < PI * 0.42:
 						dog.set_active_dog_command(dog.ActiveCommand.STAY)
+						dog.befehl_counter += 1
+						
 					elif angle < PI * 0.7:
 						dog.set_active_dog_command(dog.ActiveCommand.DROP_PICKUP)
+						dog.befehl_counter += 1
 						
 				elif angle < 0.0:
 					if angle > PI * -0.14:
 						dog.set_active_dog_command(dog.ActiveCommand.COME)
+						dog.befehl_counter += 1
+						
 					elif angle > PI * -0.42:
 						dog.set_active_dog_command(dog.ActiveCommand.FETCH)
+						dog.befehl_counter += 1
+						
 					elif angle > PI * -0.7:
 						dog.set_active_dog_command(dog.ActiveCommand.SPEAK)
+						dog.befehl_counter += 1
 
 func _process(delta):
 	_horizontal_direction = (

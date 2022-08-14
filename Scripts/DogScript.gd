@@ -6,6 +6,7 @@ signal push_player
 onready var ballSpawner : BallSpawner = get_node("../BallSpawner")
 onready var player : KinematicBody2D = get_node("../Player")
 onready var animationPlayer : AnimationPlayer = get_node("./DogRig/AnimationPlayer")
+onready var heartAnimation : AnimationPlayer = get_node("./HeartAnimation/AnimationPlayer")
 
 
 const UP_DIRECTION : Vector2 = Vector2.UP
@@ -14,11 +15,14 @@ export var speed : float = 400.0
 export var jump_strength: float = 1000
 export var gravity : float = 4500.0
 export var ball_margin : float = 5.0
+export var pet_distance : float = 75.0
 
 export var _swap_offset : float = 5.0
 export var max_pickup_distance : float = 100.0
 var player_min_margin : float = 70.0
 var player_max_margin : float = 170.0
+
+var befehl_counter : int = 0
 
 
 var _direction : Vector2 = Vector2.RIGHT
@@ -34,11 +38,22 @@ var last_command = ActiveCommand.STAY
 var item_holding = null
 var sitting = true
 
+var is_being_petted = false
+var petable = false
+
 # come
 var come_to_player : bool = false
 var first_command_frame : bool = false
 
 func _process(delta):
+
+	if heartAnimation.current_animation == "heart":
+		is_being_petted = true
+		$HeartAnimation.visible = true
+	else:
+		is_being_petted = false
+		$HeartAnimation.visible = false
+
 	var scaleX = animationPlayer.get_parent().get_scale().x
 	
 	var pickup_position = $PickupPosition
@@ -65,6 +80,20 @@ func _process(delta):
 		else:
 			animationPlayer.play("walk", 0.15)
 			
+
+	# pets
+	
+	if (player.position - position).length() <= pet_distance and not is_being_petted and petable:
+		$PetSprite.visible = true
+	else:
+		$PetSprite.visible = false
+
+	if $PetSprite.visible:
+		if Input.is_action_just_pressed("pet"):
+			petable = false
+			$PetTimer.start()
+			$HeartAnimation.visible = true
+			heartAnimation.play("heart")
 
 func _physics_process(delta:float) -> void:
 	
@@ -217,3 +246,6 @@ func set_active_dog_command(dog_command):
 func _on_TimerUntilSit_timeout():
 	sitting = true
 	animationPlayer.play("sit")
+	
+func _on_PetTimer_timeout():
+	petable = true
