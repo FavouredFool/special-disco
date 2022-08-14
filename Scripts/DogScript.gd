@@ -242,9 +242,7 @@ func command_drop_pickup():
 
 func command_speak():
 	# speak
-	
-	if not $BarkSound.is_playing():
-		$BarkSound.play()
+	$TimeTillBark.start()
 
 		
 	set_active_dog_command(last_command)
@@ -261,3 +259,7 @@ func _on_TimerUntilSit_timeout():
 	
 func _on_PetTimer_timeout():
 	petable = true
+
+
+func _on_TimeTillBark_timeout():
+	$BarkSound.play()

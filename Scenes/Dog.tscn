@@ -63,5 +63,10 @@ stream = ExtResource( 6 )
 volume_db = -10.0
 pitch_scale = 1.5
 
+[node name="TimeTillBark" type="Timer" parent="."]
+wait_time = 0.4
+one_shot = true
+
 [connection signal="timeout" from="TimerUntilSit" to="." method="_on_TimerUntilSit_timeout"]
 [connection signal="timeout" from="PetTimer" to="." method="_on_PetTimer_timeout"]
+[connection signal="timeout" from="TimeTillBark" to="." method="_on_TimeTillBark_timeout"]
