@@ -5,6 +5,7 @@ class_name Player
 onready var CoyoteTimer : Timer = $CoyoteTimer
 onready var dog = get_node("../Dog")
 onready var animationPlayer : AnimationPlayer = get_node("./CharacterRig/AnimationPlayer")
+#onready var ballSpawner = get_node("../ballSpawner")
 
 var cwNone = preload("res://CommandWheel/CommandWheelnonedrop.png")
 var cwStay = preload("res://CommandWheel/CommandWheelstay.png")
@@ -44,12 +45,11 @@ func _input(event):
 			
 			if $RingSelection.visible:
 				# ring selection logic
-				
+			
 				var mouse_position = get_viewport().get_mouse_position()
-				
-				var direction : Vector2 = mouse_position - position
-				
+				var direction : Vector2 = mouse_position - $RingSelection.global_position
 				var angle = Vector2.UP.angle_to(direction)
+				
 				
 				if angle > 0.0:
 					#positive angles
@@ -66,7 +66,7 @@ func _input(event):
 					elif angle > PI * -0.42:
 						dog.set_active_dog_command(dog.ActiveCommand.FETCH)
 					elif angle > PI * -0.7:
-						dog.set_active_dog_command(dog.ActiveCommand.BARK)
+						dog.set_active_dog_command(dog.ActiveCommand.SPEAK)
 
 func _process(delta):
 	_horizontal_direction = (
@@ -88,7 +88,7 @@ func _process(delta):
 			var mouse_position = get_viewport().get_mouse_position()
 			var direction : Vector2 = mouse_position - $RingSelection.global_position
 			var angle = Vector2.UP.angle_to(direction)
-
+			
 			if angle > 0.0:
 				if angle < PI * 0.14:
 					if dog.item_holding:
@@ -163,6 +163,8 @@ func _physics_process(delta:float) -> void:
 				_desires_jump = false
 			elif collision.normal.x == -_horizontal_direction:
 				collision.collider.move_and_slide(Vector2(_horizontal_direction, collision.collider._velocity.y) * speed/2, UP_DIRECTION)
+				
+		
 	
 	_velocity.x = _horizontal_direction * speed
 	

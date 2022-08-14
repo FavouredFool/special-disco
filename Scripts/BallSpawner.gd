@@ -13,6 +13,8 @@ export var hold_increase : float = 300
 
 onready var throw_strength = min_throw_strength
 
+var ball_is_thrown = false
+
 func _draw():
 	if not player.get_node("RingSelection").visible:
 		var draw_goal = player.position + (get_viewport().get_mouse_position() - player.position).normalized() * throw_strength / 8
@@ -24,15 +26,16 @@ func _process(delta):
 	update()
 	if not player.get_node("RingSelection").visible:
 		if Input.is_mouse_button_pressed(1):
-			if ball_instance:
-				return_ball()
+			if ball_is_thrown:
+				#cant throw
+				print("no ball")
 			else:
-				
 				throw_strength += hold_increase * delta
 				throw_strength = clamp(throw_strength, min_throw_strength, max_throw_strength)
 			
 		if Input.is_action_just_released("left_click"):
-			if not ball_instance:
+			if not ball_is_thrown:
+				ball_is_thrown = true
 				instantiate_ball(get_viewport().get_mouse_position())
 			throw_strength = min_throw_strength
 
@@ -40,6 +43,7 @@ func instantiate_ball(var goalPosition : Vector2):
 	ball_instance = ball.instance()
 	add_child(ball_instance)
 	ball_instance.add_to_group("pickupable")
+	ball_instance.add_to_group("ball")
 	ball_instance.position = player.get_position()
 	
 	throw_ball(ball_instance, player.get_position(), goalPosition)
@@ -49,6 +53,7 @@ func return_ball():
 	ball_instance = null
 
 func throw_ball(ball : RigidBody2D, startPosition, goalPosition):
+	ball_instance.get_node("Timer").start()
 	player.get_node("CharacterRig/AnimationPlayer").play("throw")
 	var forceDirection = (goalPosition - startPosition).normalized() * throw_strength
 	ball.apply_impulse(Vector2.ZERO, forceDirection)
@@ -57,8 +62,14 @@ func instantiate_ball_for_dog(var position : Vector2):
 	ball_instance = ball.instance()
 	add_child(ball_instance)
 	ball_instance.add_to_group("pickupable")
+	ball_instance.add_to_group("ball")
 	ball_instance.position = position
+	ball_instance.pickupable = true
 	
+func pickup_ball():
+	ball_is_thrown = false
+	return_ball()
+		
 func draw_dashed_line(from, to, color, width, dash_length = 5, cap_end = false, antialiased = false):
 	#https://github.com/juddrgledhill/godot-dashed-line
 	var length = (to - from).length()

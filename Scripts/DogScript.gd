@@ -166,7 +166,7 @@ func command_fetch():
 
 	else:
 		# stand still
-		set_active_dog_command(ActiveCommand.Stay)
+		set_active_dog_command(ActiveCommand.STAY)
 	
 func command_drop_pickup():
 	
