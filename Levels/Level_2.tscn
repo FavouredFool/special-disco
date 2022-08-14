@@ -426,6 +426,7 @@ perm_open = true
 
 [node name="ButtonRed" parent="." instance=ExtResource( 12 )]
 position = Vector2( 694, 453 )
+perm_open = true
 
 [connection signal="button_blue_pressed" from="ButtonBlue" to="DoorBlue" method="_on_ButtonBlue_button_blue_pressed"]
 [connection signal="button_blue_released" from="ButtonBlue" to="DoorBlue" method="_on_ButtonBlue_button_blue_released"]
