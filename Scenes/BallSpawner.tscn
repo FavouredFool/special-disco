@@ -6,3 +6,4 @@
 script = ExtResource( 1 )
 max_throw_strength = 1000.0
 min_throw_strength = 300.0
+hold_increase = 400.0
