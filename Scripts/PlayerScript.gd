@@ -36,6 +36,7 @@ var _horizontal_direction : float
 var _desires_jump : bool
 var desires_bounce = false
 var is_bouncing = false
+var step = false
 
 var _ballSpawnPoint : Vector2 = Vector2.ZERO
 
@@ -166,8 +167,20 @@ func _process(delta):
 			animationPlayer.play("idle")
 		else:
 			animationPlayer.play("walk", 0.15)
-		
-		
+	
+	if animationPlayer.current_animation == "walk":
+		# sounds
+		if step:
+			match randi() % 4:
+				0:
+					$Step1.play()
+				1:
+					$Step2.play()
+				2:
+					$Step3.play()
+					
+	step = false
+			
 func _physics_process(delta:float) -> void:
 	
 	# determine if jump
@@ -218,3 +231,7 @@ func _physics_process(delta:float) -> void:
 
 func _on_Timer_timeout():
 	_jump_avaliable = false
+
+
+func _on_WalkTimer_timeout():
+	step = true
