@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/BallSpawner.tscn" type="PackedScene" id=2]
@@ -10,6 +10,8 @@
 [ext_resource path="res://Scenes/ButtonBlue.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Scenes/DoorGreen.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Scenes/AntiStuck.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Scenes/DoorRed.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Scenes/ButtonRed.tscn" type="PackedScene" id=12]
 
 [sub_resource type="ConvexPolygonShape2D" id=17]
 points = PoolVector2Array( 0, 0, 128, 0, 128, 128, 0, 128 )
@@ -418,7 +420,16 @@ position = Vector2( 1120, 97 )
 [node name="AntiStuck2" parent="." instance=ExtResource( 10 )]
 position = Vector2( 288, 353 )
 
+[node name="DoorRed" parent="." instance=ExtResource( 11 )]
+position = Vector2( 974, 313 )
+perm_open = true
+
+[node name="ButtonRed" parent="." instance=ExtResource( 12 )]
+position = Vector2( 694, 453 )
+
 [connection signal="button_blue_pressed" from="ButtonBlue" to="DoorBlue" method="_on_ButtonBlue_button_blue_pressed"]
 [connection signal="button_blue_released" from="ButtonBlue" to="DoorBlue" method="_on_ButtonBlue_button_blue_released"]
 [connection signal="button_green_pressed" from="ButtonGreen" to="DoorGreen" method="_on_ButtonGreen_button_green_pressed"]
 [connection signal="button_green_released" from="ButtonGreen" to="DoorGreen" method="_on_ButtonGreen_button_green_released"]
+[connection signal="button_red_pressed" from="ButtonRed" to="DoorRed" method="_on_ButtonRed_button_red_pressed"]
+[connection signal="button_red_released" from="ButtonRed" to="DoorRed" method="_on_ButtonRed_button_red_released"]

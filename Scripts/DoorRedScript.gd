@@ -16,7 +16,6 @@ func _ready():
 		$Sprite.texture = texture
 
 func _on_ButtonRed_button_red_pressed():
-	print("PRESSED")
 	$StaticBody2D/CollisionShape2D.disabled = true
 	if perm_open:
 		if not is_open and first_frame_pressed:
