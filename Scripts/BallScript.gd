@@ -8,6 +8,8 @@ var prev_picked_up = false
 var gravity = 3500
 var pickupable = false
 
+var collision_allowed = true
+
 func _ready():
 	contact_monitor = true
 	contacts_reported = 10
@@ -28,6 +30,11 @@ func _physics_process(delta):
 		for col in $Area2D.get_overlapping_bodies():
 			if col.is_in_group("player"):
 				get_parent().pickup_ball()
+
+	if get_colliding_bodies().size() > 0 and linear_velocity.length() > 40 and collision_allowed:
+		collision_allowed = false
+		print("SOUND?")
+		$CollisionTimer.start()
 		
 func _on_body_entered(body:Node):
 	print(body, " entered")
@@ -35,3 +42,7 @@ func _on_body_entered(body:Node):
 
 func _on_Timer_timeout():
 	pickupable = true
+
+
+func _on_CollisionTimer_timeout():
+	collision_allowed = true
