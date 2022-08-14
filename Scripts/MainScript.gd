@@ -20,3 +20,5 @@ func reset(var nodeToDestory, var nodeToReset):
 	if newLevel:
 		var instance = newLevel.instance()
 		add_child(instance)
+		
+	$RestartAudio.play()

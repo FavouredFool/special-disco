@@ -21,8 +21,6 @@ export var max_pickup_distance : float = 100.0
 var player_min_margin : float = 70.0
 var player_max_margin : float = 170.0
 
-var befehl_counter : int = 0
-
 
 var _direction : Vector2 = Vector2.RIGHT
 var _velocity : Vector2 = Vector2.ZERO
