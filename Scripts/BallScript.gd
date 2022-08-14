@@ -30,6 +30,8 @@ func _physics_process(delta):
 		for col in $Area2D.get_overlapping_bodies():
 			if col.is_in_group("player"):
 				get_parent().pickup_ball()
+				get_parent().play_sound()
+				
 
 	if get_colliding_bodies().size() > 0 and linear_velocity.length() > 40 and collision_allowed:
 		collision_allowed = false

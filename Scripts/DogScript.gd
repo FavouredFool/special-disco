@@ -95,6 +95,7 @@ func _process(delta):
 			$PetTimer.start()
 			$HeartAnimation.visible = true
 			heartAnimation.play("heart")
+			$BarkSound.play()
 
 func _physics_process(delta:float) -> void:
 	

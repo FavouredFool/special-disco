@@ -182,8 +182,7 @@ func _physics_process(delta:float) -> void:
 			elif collision.normal.x == -_horizontal_direction:
 				collision.collider.move_and_slide(Vector2(_horizontal_direction, collision.collider._velocity.y) * speed/2, UP_DIRECTION)
 				
-		
-	
+				
 	_velocity.x = _horizontal_direction * speed
 	
 	

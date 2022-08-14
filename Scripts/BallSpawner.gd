@@ -70,6 +70,9 @@ func instantiate_ball_for_dog(var position : Vector2):
 func pickup_ball():
 	ball_is_thrown = false
 	return_ball()
+
+func play_sound():
+	$PickupBall.play()
 		
 func draw_dashed_line(from, to, color, width, dash_length = 5, cap_end = false, antialiased = false):
 	#https://github.com/juddrgledhill/godot-dashed-line

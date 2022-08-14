@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Scripts/BallSpawner.gd" type="Script" id=1]
 [ext_resource path="res://Sounds/Throw2.wav" type="AudioStream" id=2]
+[ext_resource path="res://Sounds/BallPickupnoLoop.tres" type="AudioStream" id=3]
 
 [node name="BallSpawner" type="Node2D" groups=["ball_spawner"]]
 script = ExtResource( 1 )
@@ -12,3 +13,7 @@ hold_increase = 400.0
 [node name="Throw" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 2 )
 pitch_scale = 2.0
+
+[node name="PickupBall" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+pitch_scale = 3.0
