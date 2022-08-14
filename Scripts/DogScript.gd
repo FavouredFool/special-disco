@@ -166,7 +166,7 @@ func command_fetch():
 
 	else:
 		# stand still
-		set_active_dog_command(last_command)
+		set_active_dog_command(ActiveCommand.Stay)
 	
 func command_drop_pickup():
 	
@@ -194,11 +194,11 @@ func command_drop_pickup():
 			min_item.picked_up()
 			item_holding = min_item
 	
-	set_active_dog_command(last_command)
+	set_active_dog_command(ActiveCommand.STAY)
 
 func command_speak():
 	# speak
-	set_active_dog_command(ActiveCommand.STAY)
+	set_active_dog_command(last_command)
 
 func set_active_dog_command(dog_command):
 	last_command = active_command
