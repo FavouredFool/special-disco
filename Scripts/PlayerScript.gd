@@ -145,7 +145,7 @@ func _process(delta):
 	animationPlayer.get_parent().set_scale(Vector2(scaleX, animationPlayer.get_parent().get_scale().y))
 	
 	#if _velocity.is_equal_approx(Vector2.ZERO):
-	if not animationPlayer.current_animation == "throw":
+	if is_on_floor() and not animationPlayer.current_animation == "throw":
 		if _velocity.x == 0:
 			animationPlayer.play("idle")
 		else:
@@ -182,12 +182,14 @@ func _physics_process(delta:float) -> void:
 	var is_running : bool = is_on_floor() and not is_zero_approx(_velocity.x)
 	
 	if _desires_jump and not desires_bounce:
+		animationPlayer.play("jump", 0, 2)
 		_velocity.y = -jump_strength
 		_desires_jump = false
 	elif is_jump_cancelled and not is_bouncing:
 		_velocity.y = 0.0
 		
 	if desires_bounce:
+		animationPlayer.play("jump", 0, 2)
 		_velocity.y = -jump_strength * bounce_multiplicator
 		desires_bounce = false
 		is_bouncing = true
