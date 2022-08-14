@@ -14,6 +14,7 @@ export var speed : float = 400.0
 export var jump_strength: float = 1000
 export var gravity : float = 4500.0
 export var ball_margin : float = 5.0
+export var vertical_ball_margin : float = 20.0
 export var pet_distance : float = 75.0
 
 export var _swap_offset : float = 5.0
@@ -182,9 +183,11 @@ func command_fetch():
 		# determine x-direction
 		#var distance_from_ball : float = (ballSpawner.ball_instance.position - position).length()
 		var horizontal_distance_from_ball : float = ballSpawner.ball_instance.position.x - position.x
-		var distance_from_ball = abs(horizontal_distance_from_ball)
+		horizontal_distance_from_ball = abs(horizontal_distance_from_ball)
 		
-		if (distance_from_ball > ball_margin):
+		var vertical_distance_from_ball : float = ballSpawner.ball_instance.position.y - position.y
+		
+		if (horizontal_distance_from_ball > ball_margin or vertical_distance_from_ball > vertical_ball_margin):
 			if right == 1:
 				right = sign(ballSpawner.ball_instance.position.x - position.x + _swap_offset)
 			elif right == -1:

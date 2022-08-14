@@ -167,17 +167,6 @@ func _process(delta):
 			animationPlayer.play("idle")
 		else:
 			animationPlayer.play("walk", 0.15)
-	
-	if animationPlayer.current_animation == "walk":
-		# sounds
-		if step:
-			match randi() % 4:
-				0:
-					$Step1.play()
-				1:
-					$Step2.play()
-				2:
-					$Step3.play()
 					
 	step = false
 			
