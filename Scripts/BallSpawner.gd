@@ -53,6 +53,7 @@ func return_ball():
 	ball_instance = null
 
 func throw_ball(ball : RigidBody2D, startPosition, goalPosition):
+	$Throw.play()
 	ball_instance.get_node("Timer").start()
 	player.get_node("CharacterRig/AnimationPlayer").play("throw")
 	var forceDirection = (goalPosition - startPosition).normalized() * throw_strength

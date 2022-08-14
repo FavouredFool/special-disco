@@ -1,5 +1,8 @@
 extends Node
 
+func _process(delta):
+	if not $BGMusic.is_playing():
+		$BGMusic.play()
 
 func switchScenes(var nodeToDestory, var sceneToSwitchTo):
 	nodeToDestory.queue_free()

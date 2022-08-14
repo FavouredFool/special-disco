@@ -1,9 +1,14 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Scripts/BallSpawner.gd" type="Script" id=1]
+[ext_resource path="res://Sounds/Throw2.wav" type="AudioStream" id=2]
 
 [node name="BallSpawner" type="Node2D" groups=["ball_spawner"]]
 script = ExtResource( 1 )
 max_throw_strength = 1000.0
 min_throw_strength = 300.0
 hold_increase = 400.0
+
+[node name="Throw" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+pitch_scale = 2.0
