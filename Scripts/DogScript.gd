@@ -120,7 +120,7 @@ func _physics_process(delta:float) -> void:
 	
 
 	# Jump
-	if _desires_jump:
+	if _desires_jump and _jump_avaliable:
 		animationPlayer.play("jump", 0.15, 2.0)
 		_velocity.y = -jump_strength
 		_desires_jump = false
@@ -179,7 +179,9 @@ func command_fetch():
 	
 	if ballSpawner.ball_instance and not item_holding:
 		# determine x-direction
-		var distance_from_ball : float = (ballSpawner.ball_instance.position - position).length()
+		#var distance_from_ball : float = (ballSpawner.ball_instance.position - position).length()
+		var horizontal_distance_from_ball : float = ballSpawner.ball_instance.position.x - position.x
+		var distance_from_ball = abs(horizontal_distance_from_ball)
 		
 		if (distance_from_ball > ball_margin):
 			if right == 1:
