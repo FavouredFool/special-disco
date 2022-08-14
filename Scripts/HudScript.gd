@@ -1,7 +1,7 @@
 extends Control
 
 var ball_texture = preload("res://Ball.png")
-var no_ball_texture = preload("res://NoBall.png")
+var no_ball_texture = preload("res://NoBallTransparent.png")
 
 func _process(delta):
 	var ballSpawner
