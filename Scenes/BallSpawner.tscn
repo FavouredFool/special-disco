@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Scripts/BallSpawner.gd" type="Script" id=1]
 
-[node name="BallSpawner" type="Node2D"]
+[node name="BallSpawner" type="Node2D" groups=["ball_spawner"]]
 script = ExtResource( 1 )
 max_throw_strength = 1000.0
 min_throw_strength = 300.0

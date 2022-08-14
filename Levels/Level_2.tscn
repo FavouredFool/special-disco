@@ -376,7 +376,7 @@ points = PoolVector2Array( 0, 0, 128, 0, 128, 128, 0, 128 )
 [node name="Level_2" type="Node2D"]
 
 [node name="Player" parent="." groups=["player"] instance=ExtResource( 1 )]
-position = Vector2( 371, 501 )
+position = Vector2( 404, 525 )
 
 [node name="BallSpawner" parent="." instance=ExtResource( 2 )]
 min_throw_strength = 500.0
