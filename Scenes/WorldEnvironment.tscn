@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=2]
+
+[sub_resource type="GradientTexture2D" id=3]
+fill_from = Vector2( 0, 0.116071 )
+fill_to = Vector2( 1, 0.0982143 )
+
+[sub_resource type="Environment" id=1]
+background_mode = 4
+fog_sun_amount = 1.0
+glow_enabled = true
+glow_levels/1 = true
+glow_levels/2 = true
+glow_levels/3 = false
+glow_levels/5 = false
+glow_intensity = 2.0
+glow_strength = 1.1
+glow_blend_mode = 0
+glow_bicubic_upscale = true
+adjustment_color_correction = SubResource( 3 )
+
+[node name="WorldEnvironment" type="WorldEnvironment"]
+environment = SubResource( 1 )
