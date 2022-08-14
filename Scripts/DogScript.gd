@@ -58,13 +58,16 @@ func _process(delta):
 	
 	var pickup_position = $PickupPosition
 	var pointPos = pickup_position.position.x
+	var heartAnimationForPos = $HeartAnimation
 	
 	if sign(_velocity.x) > 0:
 		scaleX = abs(scaleX)
 		pointPos = abs(pointPos)
+		heartAnimationForPos.position.x = abs(heartAnimationForPos.position.x)
 	elif sign(_velocity.x) < 0:
 		scaleX = -abs(scaleX)
 		pointPos = -abs(pointPos)
+		heartAnimationForPos.position.x = -abs(heartAnimationForPos.position.x)
 		
 	animationPlayer.get_parent().set_scale(Vector2(scaleX, animationPlayer.get_parent().get_scale().y))
 	pickup_position.set_position(Vector2(pointPos, pickup_position.position.y))
