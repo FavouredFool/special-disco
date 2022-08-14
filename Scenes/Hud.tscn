@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://NoBall.png" type="Texture" id=1]
+[ext_resource path="res://NoBallTransparent.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/HudScript.gd" type="Script" id=2]
 [ext_resource path="res://ResetMessage.png" type="Texture" id=3]
 
