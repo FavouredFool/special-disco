@@ -15,11 +15,11 @@ func _physics_process(delta):
 			emit_signal("button_red_pressed")
 		$Sprite.texture = plate_pressed
 		
-		first_pressed = false
-		first_released = true
-		
 		if first_pressed:
 			$Sound.play()
+		
+		first_pressed = false
+		first_released = true
 		
 	else:
 		emit_signal("button_red_released")
