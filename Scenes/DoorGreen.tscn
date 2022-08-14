@@ -4,7 +4,7 @@
 [ext_resource path="res://Doors/LaserbeamGreen.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 3.86616, 9.77976 )
+extents = Vector2( 3.86616, 8.94149 )
 
 [node name="Door" type="Node2D"]
 script = ExtResource( 1 )
@@ -15,10 +15,11 @@ collision_layer = 2
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2( 2, -1.66893e-06 )
+position = Vector2( 2, 6 )
 scale = Vector2( 4.39713, 7.15764 )
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
-scale = Vector2( 0.14, 0.14 )
+position = Vector2( 0, 6 )
+scale = Vector2( 0.14, 0.125 )
 texture = ExtResource( 2 )
