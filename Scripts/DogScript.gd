@@ -140,7 +140,7 @@ func command_come():
 	
 func command_fetch():
 	
-	if ballSpawner.ball_instance:
+	if ballSpawner.ball_instance and not item_holding:
 		# determine x-direction
 		var distance_from_ball : float = (ballSpawner.ball_instance.position - position).length()
 		

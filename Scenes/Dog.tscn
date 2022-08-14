@@ -14,7 +14,7 @@ script = ExtResource( 2 )
 speed = 300.0
 jump_strength = 1100.0
 gravity = 3500.0
-ball_margin = 30.0
+ball_margin = 35.0
 _swap_offset = 25.0
 max_pickup_distance = 70.0
 
