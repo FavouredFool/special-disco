@@ -9,3 +9,14 @@ func switchScenes(var nodeToDestory, var sceneToSwitchTo):
 	if newLevel:
 		var instance = newLevel.instance()
 		add_child(instance)
+
+		
+func reset(var nodeToDestory, var nodeToReset):
+	nodeToDestory.queue_free()
+	print("reset to: " + nodeToReset)
+	
+	var newLevel = load(nodeToReset)
+	
+	if newLevel:
+		var instance = newLevel.instance()
+		add_child(instance)
