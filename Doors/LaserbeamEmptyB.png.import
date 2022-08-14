@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/LaserbeamGreenB.png-299c2ded0a46dd3f79ef8ab762501c5c.stex"
+path="res://.import/LaserbeamEmptyB.png-3aadabb87139c1d43d0580895ad03839.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://LaserbeamGreenB.png"
-dest_files=[ "res://.import/LaserbeamGreenB.png-299c2ded0a46dd3f79ef8ab762501c5c.stex" ]
+source_file="res://Doors/LaserbeamEmptyB.png"
+dest_files=[ "res://.import/LaserbeamEmptyB.png-3aadabb87139c1d43d0580895ad03839.stex" ]
 
 [params]
 

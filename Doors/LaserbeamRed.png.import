@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/LaserbeamBlue.png-bd29344c063ee82e68580e253945f8f7.stex"
+path="res://.import/LaserbeamRed.png-78ebe59fa60476938297bfbe6d27a2e9.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://LaserbeamBlue.png"
-dest_files=[ "res://.import/LaserbeamBlue.png-bd29344c063ee82e68580e253945f8f7.stex" ]
+source_file="res://Doors/LaserbeamRed.png"
+dest_files=[ "res://.import/LaserbeamRed.png-78ebe59fa60476938297bfbe6d27a2e9.stex" ]
 
 [params]
 
