@@ -192,6 +192,7 @@ func _physics_process(delta:float) -> void:
 	var is_running : bool = is_on_floor() and not is_zero_approx(_velocity.x)
 	
 	if _desires_jump and not desires_bounce:
+		$JumpSound.play()
 		animationPlayer.play("jump", 0, 2)
 		_velocity.y = -jump_strength
 		_desires_jump = false
@@ -199,6 +200,7 @@ func _physics_process(delta:float) -> void:
 		#_velocity.y = 0.0
 		
 	if desires_bounce:
+		$BounceSound.play()
 		animationPlayer.play("jump", 0, 2)
 		_velocity.y = -jump_strength * bounce_multiplicator
 		desires_bounce = false

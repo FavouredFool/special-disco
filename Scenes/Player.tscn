@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://CommandWheel/CommandWheelnone.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/PlayerScript.gd" type="Script" id=2]
+[ext_resource path="res://Sounds/Jump.wav" type="AudioStream" id=3]
 [ext_resource path="res://Scenes/BoyRig.tscn" type="PackedScene" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -35,5 +36,14 @@ shape = SubResource( 1 )
 
 [node name="CharacterRig" parent="." instance=ExtResource( 4 )]
 scale = Vector2( 0.14, 0.14 )
+
+[node name="JumpSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+
+[node name="BounceSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+pitch_scale = 2.0
+
+[node name="ThrowSound" type="AudioStreamPlayer" parent="."]
 
 [connection signal="timeout" from="CoyoteTimer" to="." method="_on_Timer_timeout"]

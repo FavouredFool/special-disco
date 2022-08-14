@@ -8,7 +8,6 @@ onready var player : KinematicBody2D = get_node("../Player")
 onready var animationPlayer : AnimationPlayer = get_node("./DogRig/AnimationPlayer")
 onready var heartAnimation : AnimationPlayer = get_node("./HeartAnimation/AnimationPlayer")
 
-
 const UP_DIRECTION : Vector2 = Vector2.UP
 
 export var speed : float = 400.0
@@ -127,6 +126,7 @@ func _physics_process(delta:float) -> void:
 		animationPlayer.play("jump", 0.15, 2.0)
 		_velocity.y = -jump_strength
 		_desires_jump = false
+		$JumpSound.play()
 
 	_velocity.y += gravity * delta
 	
@@ -240,6 +240,11 @@ func command_drop_pickup():
 
 func command_speak():
 	# speak
+	
+	if not $BarkSound.is_playing():
+		$BarkSound.play()
+
+		
 	set_active_dog_command(last_command)
 
 func set_active_dog_command(dog_command):
