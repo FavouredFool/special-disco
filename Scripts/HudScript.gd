@@ -9,7 +9,12 @@ func _process(delta):
 	if ballSpawnerArray.size() > 0:
 		ballSpawner = ballSpawnerArray[0]
 	if ballSpawner:
-		if ballSpawner.ball_is_thrown:
-			$Sprite.texture = no_ball_texture
+		
+		if ballSpawner.has_ball:
+			$Sprite.visible = true
+			if ballSpawner.ball_is_thrown:
+				$Sprite.texture = no_ball_texture
+			else:
+				$Sprite.texture = ball_texture
 		else:
-			$Sprite.texture = ball_texture
+			$Sprite.visible = false
