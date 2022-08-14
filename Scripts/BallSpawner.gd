@@ -7,6 +7,7 @@ onready var player = get_node("../Player")
 var ball : PackedScene = preload("res://Scenes/Ball.tscn")
 var ball_instance : RigidBody2D = null
 
+export var has_ball = true
 export var max_throw_strength : float = 300.0
 export var min_throw_strength : float = 100.0
 export var hold_increase : float = 300
@@ -16,7 +17,7 @@ onready var throw_strength = min_throw_strength
 var ball_is_thrown = false
 
 func _draw():
-	if not player.get_node("RingSelection").visible && not ball_is_thrown:
+	if not player.get_node("RingSelection").visible and not ball_is_thrown and has_ball:
 		var draw_goal = player.position + (get_viewport().get_mouse_position() - player.position).normalized() * throw_strength / 8
 		
 		draw_set_transform_matrix(transform.inverse())
@@ -24,12 +25,9 @@ func _draw():
 
 func _process(delta):
 	update()
-	if not player.get_node("RingSelection").visible:
+	if not player.get_node("RingSelection").visible and has_ball:
 		if Input.is_mouse_button_pressed(1):
-			if ball_is_thrown:
-				#cant throw
-				print("no ball")
-			else:
+			if not ball_is_thrown:
 				throw_strength += hold_increase * delta
 				throw_strength = clamp(throw_strength, min_throw_strength, max_throw_strength)
 			
