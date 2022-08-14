@@ -28,3 +28,9 @@ scale = Vector2( 0.14, 0.14 )
 
 [node name="PickupPosition" type="Position2D" parent="."]
 position = Vector2( 16, -4 )
+
+[node name="TimerUntilSit" type="Timer" parent="."]
+wait_time = 4.0
+one_shot = true
+
+[connection signal="timeout" from="TimerUntilSit" to="." method="_on_TimerUntilSit_timeout"]

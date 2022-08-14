@@ -32,6 +32,7 @@ var active_command = ActiveCommand.STAY
 var last_command = ActiveCommand.STAY
 
 var item_holding = null
+var sitting = true
 
 # come
 var come_to_player : bool = false
@@ -55,14 +56,21 @@ func _process(delta):
 	
 	var is_falling : bool = _velocity.y > 0.0 and not is_on_floor()
 
-	if is_on_floor() and not animationPlayer.current_animation == "pickupanddrop":
+	if is_on_floor() and not animationPlayer.current_animation == "pickupanddrop" and not animationPlayer.current_animation == "sit":
 		if _velocity.x == 0:
-			animationPlayer.play("idle")
+			if sitting:
+				animationPlayer.play("sit idle", 0.15)
+			else:
+				animationPlayer.play("idle", 0.15)
 		else:
 			animationPlayer.play("walk", 0.15)
 			
 
 func _physics_process(delta:float) -> void:
+	
+	if _velocity.x != 0:
+		$TimerUntilSit.start()
+		sitting = false
 	
 	if is_on_floor():
 		_jump_avaliable = true
@@ -204,3 +212,8 @@ func set_active_dog_command(dog_command):
 	last_command = active_command
 	first_command_frame = true
 	active_command = dog_command
+
+
+func _on_TimerUntilSit_timeout():
+	sitting = true
+	animationPlayer.play("sit")
