@@ -42,7 +42,7 @@ var _ballSpawnPoint : Vector2 = Vector2.ZERO
 
 func _input(event):
 	if event is InputEventMouseButton:
-		if event.button_index == BUTTON_LEFT and event.pressed:
+		if event.is_action_released("right_click"):
 			
 			if $RingSelection.visible:
 				# ring selection logic
