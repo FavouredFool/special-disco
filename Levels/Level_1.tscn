@@ -411,7 +411,6 @@ position = Vector2( 366, 451 )
 [node name="DoorBlue" parent="." instance=ExtResource( 9 )]
 visible = false
 position = Vector2( 931, 505 )
-perm_open = true
 
 [node name="DoorGreen" parent="." instance=ExtResource( 7 )]
 visible = false
