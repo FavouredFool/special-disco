@@ -373,7 +373,7 @@ points = PoolVector2Array( 0, 0, 128, 0, 128, 128, 0, 128 )
 [node name="Level_1" type="Node2D"]
 
 [node name="Player" parent="." groups=["player"] instance=ExtResource( 10 )]
-position = Vector2( 98, 142 )
+position = Vector2( 128, 585 )
 
 [node name="BallSpawner" parent="." instance=ExtResource( 4 )]
 has_ball = false
