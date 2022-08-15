@@ -411,7 +411,7 @@ position = Vector2( 1085, 452 )
 position = Vector2( 192, 259 )
 
 [node name="DoorBlue" parent="." instance=ExtResource( 10 )]
-position = Vector2( 70, 289 )
+position = Vector2( 71, 289 )
 rotation = 1.5708
 
 [node name="DoorBlue2" parent="." instance=ExtResource( 10 )]
@@ -420,7 +420,7 @@ rotation = -1.5708
 reversed = true
 
 [node name="DoorBlue3" parent="." instance=ExtResource( 10 )]
-position = Vector2( 324, 290 )
+position = Vector2( 327, 289 )
 rotation = 1.5708
 reversed = true
 
@@ -432,7 +432,7 @@ position = Vector2( 878, 571 )
 perm_activated = true
 
 [node name="DoorRed2" parent="." instance=ExtResource( 5 )]
-position = Vector2( 405, 571 )
+position = Vector2( 401, 571 )
 perm_activated = true
 
 [connection signal="button_red_pressed" from="ButtonRed" to="DoorRed" method="_on_ButtonRed_button_red_pressed"]

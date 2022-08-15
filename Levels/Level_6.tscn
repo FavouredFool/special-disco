@@ -407,11 +407,11 @@ perm_open = true
 position = Vector2( 146, 580 )
 
 [node name="DoorBlue" parent="." instance=ExtResource( 7 )]
-position = Vector2( 353, 187 )
+position = Vector2( 354, 186 )
 perm_activated = true
 
 [node name="DoorGreen" parent="." instance=ExtResource( 9 )]
-position = Vector2( 286, 188 )
+position = Vector2( 286, 187 )
 
 [node name="AntiStuck" parent="." instance=ExtResource( 10 )]
 position = Vector2( 1120, 97 )

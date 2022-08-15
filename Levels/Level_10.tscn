@@ -387,7 +387,7 @@ position = Vector2( 317, 613 )
 speed = 250.0
 
 [node name="Exit" parent="." instance=ExtResource( 4 )]
-position = Vector2( 1151, 566 )
+position = Vector2( 1151, 567 )
 level_nr = 10
 
 [node name="TileMap2" type="TileMap" parent="." groups=["EnvCollider"]]
@@ -404,7 +404,7 @@ tile_data = PoolIntArray( 0, -1610612729, 0, 1, 1610612736, 0, 2, 1610612736, 0,
 position = Vector2( 638, 516 )
 
 [node name="ButtonGreen" parent="." instance=ExtResource( 11 )]
-position = Vector2( 1167, 386 )
+position = Vector2( 1167, 387 )
 perm_open = true
 
 [node name="ButtonBlue" parent="." instance=ExtResource( 1 )]
@@ -421,7 +421,7 @@ perm_activated = true
 reversed = true
 
 [node name="DoorBlue" parent="." instance=ExtResource( 8 )]
-position = Vector2( 1057, 570 )
+position = Vector2( 1056, 569 )
 perm_activated = true
 
 [connection signal="button_red_pressed" from="ButtonRed" to="DoorRed" method="_on_ButtonRed_button_red_pressed"]

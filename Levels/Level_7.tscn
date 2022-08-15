@@ -405,7 +405,7 @@ position = Vector2( 1143, 388 )
 position = Vector2( 138, 516 )
 
 [node name="DoorBlue" parent="." instance=ExtResource( 11 )]
-position = Vector2( 962, 569 )
+position = Vector2( 960, 569 )
 
 [node name="DoorGreen" parent="." instance=ExtResource( 9 )]
 position = Vector2( 494, 570 )

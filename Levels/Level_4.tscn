@@ -388,10 +388,10 @@ position = Vector2( 1153, 248 )
 level_nr = 4
 
 [node name="Door" parent="." instance=ExtResource( 1 )]
-position = Vector2( 484, 442 )
+position = Vector2( 478, 442 )
 
 [node name="Door2" parent="." instance=ExtResource( 1 )]
-position = Vector2( 1058, 250 )
+position = Vector2( 1056, 250 )
 
 [node name="ButtonRed" parent="." instance=ExtResource( 5 )]
 position = Vector2( 273, 644 )
