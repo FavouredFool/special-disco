@@ -26,15 +26,19 @@ func _process(delta):
 		if Input.is_action_just_pressed("left_click") or Input.is_action_just_pressed("right_click"):
 			startFirstLevel()
 
-func switchScenes(var nodeToDestory, var sceneToSwitchTo):
-	nodeToDestory.queue_free()
-	var newLevel = load(sceneToSwitchTo)
+func switchScenes(var nodeToDestory, var sceneToSwitchTo, var levelNr):
 	
-	if newLevel:
-		var instance = newLevel.instance()
-		add_child(instance)
-		
-	$ExitAudio.play()
+	nodeToDestory.queue_free()
+	
+	if not levelNr == 12:
+		var newLevel = load(sceneToSwitchTo)
+		if newLevel:
+			var instance = newLevel.instance()
+			add_child(instance)
+			
+		$ExitAudio.play()
+	else:
+		$EndScreen.visible = true
 
 		
 func reset(var nodeToDestory, var nodeToReset):

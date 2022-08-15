@@ -12,7 +12,7 @@ func _physics_process(delta):
 			player_in_goal = true
 			
 	if player_in_goal:
-		main.switchScenes(get_parent(), "res://Levels/Level_" + str(level_nr + 1) + ".tscn")
+		main.switchScenes(get_parent(), "res://Levels/Level_" + str(level_nr + 1) + ".tscn", level_nr + 1)
 
 func _process(delta):
 	if Input.is_action_just_pressed("reset"):
