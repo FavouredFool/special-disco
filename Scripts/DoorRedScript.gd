@@ -39,3 +39,11 @@ func _on_ButtonRed_button_red_released():
 			$Laser_up.play()
 	first_frame_released = false
 	first_frame_pressed = true
+
+
+func _on_ButtonRed2_button_red_pressed():
+	pass # Replace with function body.
+
+
+func _on_ButtonRed2_button_red_released():
+	pass # Replace with function body.
