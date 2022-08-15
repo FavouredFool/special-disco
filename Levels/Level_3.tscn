@@ -412,7 +412,6 @@ position = Vector2( 951, 505 )
 
 [node name="DoorGreen" parent="." instance=ExtResource( 8 )]
 position = Vector2( 1041, 506 )
-perm_open = true
 
 [node name="AntiStuck" parent="." instance=ExtResource( 7 )]
 position = Vector2( 288, 353 )

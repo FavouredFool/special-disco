@@ -78,6 +78,7 @@ speed = 250.0
 
 [node name="Exit" parent="." instance=ExtResource( 3 )]
 position = Vector2( 1120, 175 )
+level_nr = 5
 
 [node name="Door" parent="." instance=ExtResource( 4 )]
 position = Vector2( 430, 374 )
