@@ -405,11 +405,11 @@ position = Vector2( 989, 572 )
 perm_activated = true
 
 [node name="ButtonRed" parent="." instance=ExtResource( 12 )]
-position = Vector2( 777, 388 )
+position = Vector2( 756, 388 )
 perm_open = true
 
 [node name="ButtonGreen" parent="." instance=ExtResource( 8 )]
-position = Vector2( 156, 643 )
+position = Vector2( 140, 643 )
 perm_open = true
 
 [node name="DoorGreen" parent="." instance=ExtResource( 1 )]
@@ -417,7 +417,7 @@ position = Vector2( 915, 571 )
 perm_activated = true
 
 [node name="ButtonBlue" parent="." instance=ExtResource( 7 )]
-position = Vector2( 159, 452 )
+position = Vector2( 145, 452 )
 perm_open = true
 
 [node name="DoorBlue" parent="." instance=ExtResource( 2 )]

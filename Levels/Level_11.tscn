@@ -428,7 +428,7 @@ reversed = true
 position = Vector2( 1000, 378 )
 
 [node name="DoorRed" parent="." instance=ExtResource( 5 )]
-position = Vector2( 878, 569 )
+position = Vector2( 878, 571 )
 perm_activated = true
 
 [node name="DoorRed2" parent="." instance=ExtResource( 5 )]

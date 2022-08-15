@@ -404,7 +404,7 @@ tile_data = PoolIntArray( 0, -1610612729, 0, 1, 1610612736, 0, 2, 1610612736, 0,
 position = Vector2( 621, 644 )
 
 [node name="ButtonGreen" parent="." instance=ExtResource( 6 )]
-position = Vector2( 127, 516 )
+position = Vector2( 134, 516 )
 perm_open = true
 
 [node name="DoorBlue" parent="." instance=ExtResource( 9 )]

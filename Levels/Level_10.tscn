@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://Scenes/ButtonBlue.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/ButtonRed.tscn" type="PackedScene" id=2]
@@ -9,6 +9,8 @@
 [ext_resource path="res://Scenes/Dog.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Scenes/DoorBlue.tscn" type="PackedScene" id=8]
 [ext_resource path="res://TilemapForeground newer.png" type="Texture" id=9]
+[ext_resource path="res://Scenes/DoorGreen.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Scenes/ButtonGreen.tscn" type="PackedScene" id=11]
 
 [sub_resource type="ConvexPolygonShape2D" id=49]
 points = PoolVector2Array( 0, 0, 128, 0, 128, 128, 0, 128 )
@@ -372,20 +374,20 @@ points = PoolVector2Array( 0, 0, 128, 0, 128, 128, 0, 128 )
 } ]
 14/z_index = 0
 
-[node name="Level_10" type="Node2D"]
+[node name="Level_9" type="Node2D"]
 
 [node name="Player" parent="." groups=["player"] instance=ExtResource( 6 )]
-position = Vector2( 439, 572 )
+position = Vector2( 433, 588 )
 
 [node name="BallSpawner" parent="." instance=ExtResource( 3 )]
 min_throw_strength = 500.0
 
 [node name="Dog" parent="." instance=ExtResource( 7 )]
-position = Vector2( 363, 610 )
+position = Vector2( 317, 613 )
 speed = 250.0
 
 [node name="Exit" parent="." instance=ExtResource( 4 )]
-position = Vector2( 1156, 440 )
+position = Vector2( 1151, 566 )
 level_nr = 10
 
 [node name="TileMap2" type="TileMap" parent="." groups=["EnvCollider"]]
@@ -396,30 +398,35 @@ cell_quadrant_size = 32
 collision_layer = 2
 collision_mask = 0
 format = 1
-tile_data = PoolIntArray( 0, -1610612729, 0, 1, 1610612736, 0, 2, 1610612736, 0, 3, 1610612736, 0, 4, 1610612736, 0, 5, 1610612736, 0, 6, 1610612736, 0, 7, 1610612736, 0, 8, 1610612736, 0, 9, 1610612736, 0, 10, 1610612736, 0, 11, 1610612736, 0, 12, 1610612736, 0, 13, 1610612736, 0, 14, 1610612736, 0, 15, 1610612736, 0, 16, 1610612743, 0, 17, -1073741815, 0, 18, -1073741814, 0, 19, -1073741814, 0, 65536, -1610612736, 0, 65552, -1073741824, 0, 65553, -1073741815, 0, 65554, -1073741814, 0, 65555, -1073741814, 0, 131072, -1610612736, 0, 131088, -1073741824, 0, 131089, -1073741815, 0, 131090, -1073741814, 0, 131091, -1073741814, 0, 196608, -1610612736, 0, 196624, -1073741824, 0, 196625, 1610612744, 0, 196626, 1610612745, 0, 196627, 1610612745, 0, 262144, -1610612736, 0, 262160, 1610612748, 0, 262161, 1610612736, 0, 262162, 1610612736, 0, 262163, 1610612743, 0, 327680, -1610612736, 0, 327696, -1073741819, 0, 327699, -1073741824, 0, 393216, -1610612736, 0, 393235, -1073741824, 0, 458752, 7, 0, 458753, 0, 0, 458754, 6, 0, 458758, 5, 0, 458759, 1610612741, 0, 458762, -1610612731, 0, 458771, -1073741824, 0, 524288, 9, 0, 524289, 8, 0, 524290, 7, 0, 524291, 6, 0, 524298, -1073741811, 0, 524299, 1610612741, 0, 524303, -1073741818, 0, 524304, 0, 0, 524305, 0, 0, 524306, 0, 0, 524307, -1073741817, 0, 589824, 10, 0, 589825, 14, 0, 589826, 8, 0, 589827, -1610612736, 0, 589839, -1073741824, 0, 589840, -1073741816, 0, 589841, 9, 0, 589842, 9, 0, 589843, 9, 0, 655360, -536870902, 0, 655361, -536870902, 0, 655362, -536870903, 0, 655363, -536870905, 0, 655364, 536870912, 0, 655365, 536870912, 0, 655366, 536870912, 0, 655367, 536870912, 0, 655368, 536870912, 0, 655369, 536870912, 0, 655370, 536870912, 0, 655371, 536870912, 0, 655372, 536870912, 0, 655373, 536870912, 0, 655374, 536870912, 0, 655375, -1073741817, 0, 655376, -1073741815, 0, 655377, -1073741814, 0, 655378, -1073741814, 0, 655379, -1073741814, 0 )
-
-[node name="DoorBlue" parent="." instance=ExtResource( 8 )]
-position = Vector2( 582, 484 )
-rotation = 1.5708
-reversed = true
-
-[node name="DoorRed" parent="." instance=ExtResource( 5 )]
-position = Vector2( 1058, 442 )
-
-[node name="DoorRed2" parent="." instance=ExtResource( 5 )]
-position = Vector2( 314, 482 )
-rotation = -1.5708
-reversed = true
+tile_data = PoolIntArray( 0, -1610612729, 0, 1, 1610612736, 0, 2, 1610612736, 0, 3, 1610612736, 0, 4, 1610612736, 0, 5, 1610612736, 0, 6, 1610612736, 0, 7, 1610612736, 0, 8, 1610612736, 0, 9, 1610612736, 0, 10, 1610612736, 0, 11, 1610612736, 0, 12, 1610612736, 0, 13, 1610612736, 0, 14, 1610612736, 0, 15, 1610612736, 0, 16, 1610612736, 0, 17, 1610612736, 0, 18, 1610612736, 0, 19, 1610612743, 0, 65536, -1610612736, 0, 65555, -1073741824, 0, 131072, -1610612736, 0, 131091, -1073741824, 0, 196608, -1610612736, 0, 196627, -1073741824, 0, 262144, 7, 0, 262145, 6, 0, 262163, -1073741824, 0, 327680, 8, 0, 327681, -1610612736, 0, 327699, -1073741824, 0, 393216, -1610612727, 0, 393217, -1610612736, 0, 393232, 13, 0, 393233, 1, 0, 393234, 1, 0, 393235, -2147483645, 0, 458752, -1610612727, 0, 458753, -1610612736, 0, 458768, -1073741819, 0, 458771, -1073741824, 0, 524288, -1610612727, 0, 524289, -1610612736, 0, 524296, -1073741818, 0, 524297, 0, 0, 524298, 0, 0, 524299, 6, 0, 524307, -1073741824, 0, 589824, -1610612727, 0, 589825, -1610612736, 0, 589832, -1073741824, 0, 589833, -1073741816, 0, 589834, 8, 0, 589835, -1610612736, 0, 589843, -2147483648, 0, 655360, -1610612727, 0, 655361, 7, 0, 655362, 0, 0, 655363, 0, 0, 655364, 536870912, 0, 655365, 536870912, 0, 655366, 536870912, 0, 655367, 536870912, 0, 655368, -1073741817, 0, 655369, -1073741815, 0, 655370, -1610612727, 0, 655371, 7, 0, 655372, 536870912, 0, 655373, 536870912, 0, 655374, 536870912, 0, 655375, 536870912, 0, 655376, 536870912, 0, 655377, 536870912, 0, 655378, 536870912, 0, 655379, 536870919, 0 )
 
 [node name="ButtonRed" parent="." instance=ExtResource( 2 )]
-position = Vector2( 101, 453 )
+position = Vector2( 638, 516 )
+
+[node name="ButtonGreen" parent="." instance=ExtResource( 11 )]
+position = Vector2( 1167, 386 )
+perm_open = true
 
 [node name="ButtonBlue" parent="." instance=ExtResource( 1 )]
-position = Vector2( 577, 644 )
+position = Vector2( 99, 259 )
+perm_open = true
+
+[node name="DoorRed" parent="." instance=ExtResource( 5 )]
+position = Vector2( 985, 570 )
+reversed = true
+
+[node name="DoorGreen" parent="." instance=ExtResource( 10 )]
+position = Vector2( 163, 571 )
+perm_activated = true
+reversed = true
+
+[node name="DoorBlue" parent="." instance=ExtResource( 8 )]
+position = Vector2( 1057, 570 )
+perm_activated = true
 
 [connection signal="button_red_pressed" from="ButtonRed" to="DoorRed" method="_on_ButtonRed_button_red_pressed"]
-[connection signal="button_red_pressed" from="ButtonRed" to="DoorRed2" method="_on_ButtonRed_button_red_pressed"]
 [connection signal="button_red_released" from="ButtonRed" to="DoorRed" method="_on_ButtonRed_button_red_released"]
-[connection signal="button_red_released" from="ButtonRed" to="DoorRed2" method="_on_ButtonRed_button_red_released"]
+[connection signal="button_green_pressed" from="ButtonGreen" to="DoorGreen" method="_on_ButtonGreen_button_green_pressed"]
+[connection signal="button_green_released" from="ButtonGreen" to="DoorGreen" method="_on_ButtonGreen_button_green_released"]
 [connection signal="button_blue_pressed" from="ButtonBlue" to="DoorBlue" method="_on_ButtonBlue_button_blue_pressed"]
 [connection signal="button_blue_released" from="ButtonBlue" to="DoorBlue" method="_on_ButtonBlue_button_blue_released"]
