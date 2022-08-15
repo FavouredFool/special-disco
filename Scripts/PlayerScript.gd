@@ -198,7 +198,7 @@ func _physics_process(delta:float) -> void:
 	var is_idling : bool = is_on_floor() and is_zero_approx(_velocity.x)
 	var is_running : bool = is_on_floor() and not is_zero_approx(_velocity.x)
 	
-	if _desires_jump and not desires_bounce:
+	if _desires_jump and not desires_bounce and not is_bouncing:
 		$JumpSound.play()
 		animationPlayer.play("jump", 0, 2)
 		_velocity.y = -jump_strength
@@ -210,8 +210,8 @@ func _physics_process(delta:float) -> void:
 		$BounceSound.play()
 		animationPlayer.play("jump", 0, 2)
 		_velocity.y = -jump_strength * bounce_multiplicator
-		desires_bounce = false
 		is_bouncing = true
+		desires_bounce = false
 	
 	_velocity.y += gravity * delta
 	_velocity = move_and_slide(_velocity, UP_DIRECTION)
@@ -219,7 +219,6 @@ func _physics_process(delta:float) -> void:
 
 func _on_Timer_timeout():
 	_jump_avaliable = false
-
 
 func _on_WalkTimer_timeout():
 	step = true
