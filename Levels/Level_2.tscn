@@ -409,7 +409,8 @@ position = Vector2( 133, 579 )
 
 [node name="DoorBlue" parent="." instance=ExtResource( 7 )]
 position = Vector2( 475, 186 )
-perm_open = true
+perm_activated = true
+reversed = true
 
 [node name="DoorGreen" parent="." instance=ExtResource( 9 )]
 position = Vector2( 346, 186 )
@@ -422,7 +423,7 @@ position = Vector2( 288, 353 )
 
 [node name="DoorRed" parent="." instance=ExtResource( 11 )]
 position = Vector2( 974, 313 )
-perm_open = true
+reversed = true
 
 [node name="ButtonRed" parent="." instance=ExtResource( 12 )]
 position = Vector2( 694, 453 )
