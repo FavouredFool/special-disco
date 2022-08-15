@@ -381,6 +381,7 @@ points = PoolVector2Array( 0, 0, 128, 0, 128, 128, 0, 128 )
 position = Vector2( 98, 142 )
 
 [node name="BallSpawner" parent="." instance=ExtResource( 4 )]
+has_ball = false
 min_throw_strength = 500.0
 
 [node name="Dog" parent="." instance=ExtResource( 5 )]
