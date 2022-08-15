@@ -26,7 +26,6 @@ var player_max_margin : float = 170.0
 var _direction : Vector2 = Vector2.RIGHT
 var _velocity : Vector2 = Vector2.ZERO
 var _desires_jump : bool
-var _jump_avaliable : bool
 var right = 1
 enum ActiveCommand { STAY, COME, FETCH, SPEAK, DROP_PICKUP }
 var active_command = ActiveCommand.STAY
@@ -38,6 +37,8 @@ var sitting = true
 
 var is_being_petted = false
 var petable = false
+
+var jump_too_soon = false
 
 # come
 var come_to_player : bool = false
@@ -103,9 +104,6 @@ func _physics_process(delta:float) -> void:
 		$TimerUntilSit.start()
 		sitting = false
 	
-	if is_on_floor():
-		_jump_avaliable = true
-	
 	match active_command:
 		ActiveCommand.STAY:
 			command_stay()
@@ -122,13 +120,18 @@ func _physics_process(delta:float) -> void:
 	
 
 	# Jump
-	if _desires_jump and _jump_avaliable:
+	if _desires_jump and is_on_floor() and not jump_too_soon:
 		animationPlayer.play("jump", 0.15, 2.0)
 		_velocity.y = -jump_strength
 		_desires_jump = false
+		jump_too_soon = true
+		$JumpTimeout.start()
 		$JumpSound.play()
 
+
 	_velocity.y += gravity * delta
+	#print(_velocity.y)
+	#print(position)
 	
 	_velocity = move_and_slide(_velocity, Vector2.UP)
 
@@ -263,3 +266,7 @@ func _on_PetTimer_timeout():
 
 func _on_TimeTillBark_timeout():
 	$BarkSound.play()
+
+
+func _on_JumpTimeout_timeout():
+	jump_too_soon = false

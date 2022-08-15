@@ -67,6 +67,11 @@ pitch_scale = 1.5
 wait_time = 0.4
 one_shot = true
 
+[node name="JumpTimeout" type="Timer" parent="."]
+wait_time = 0.75
+one_shot = true
+
 [connection signal="timeout" from="TimerUntilSit" to="." method="_on_TimerUntilSit_timeout"]
 [connection signal="timeout" from="PetTimer" to="." method="_on_PetTimer_timeout"]
 [connection signal="timeout" from="TimeTillBark" to="." method="_on_TimeTillBark_timeout"]
+[connection signal="timeout" from="JumpTimeout" to="." method="_on_JumpTimeout_timeout"]
