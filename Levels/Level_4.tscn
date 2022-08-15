@@ -1,5 +1,6 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=29 format=2]
 
+[ext_resource path="res://Scenes/ButtonRed.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/BallSpawner.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Exit.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=4]
@@ -8,6 +9,7 @@
 [ext_resource path="res://Scenes/DoorBlue.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Scenes/DoorGreen.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Scenes/AntiStuck.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Scenes/DoorRed.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Scenes/Dog.tscn" type="PackedScene" id=11]
 [ext_resource path="res://TilemapForeground newer.png" type="Texture" id=12]
 
@@ -401,15 +403,20 @@ tile_data = PoolIntArray( 0, 1073741831, 0, 1, 1610612736, 0, 2, 1610612736, 0, 
 
 [node name="ButtonBlue" parent="." instance=ExtResource( 5 )]
 position = Vector2( 1154, 580 )
+perm_open = true
 
 [node name="ButtonGreen" parent="." instance=ExtResource( 6 )]
 position = Vector2( 133, 579 )
+perm_open = true
 
 [node name="DoorBlue" parent="." instance=ExtResource( 7 )]
 position = Vector2( 475, 186 )
+perm_activated = true
 
 [node name="DoorGreen" parent="." instance=ExtResource( 8 )]
 position = Vector2( 346, 186 )
+perm_activated = true
+reversed = true
 
 [node name="AntiStuck" parent="." instance=ExtResource( 9 )]
 position = Vector2( 1120, 97 )
@@ -417,7 +424,17 @@ position = Vector2( 1120, 97 )
 [node name="AntiStuck2" parent="." instance=ExtResource( 9 )]
 position = Vector2( 288, 353 )
 
+[node name="ButtonRed" parent="." instance=ExtResource( 1 )]
+position = Vector2( 565, 579 )
+perm_open = true
+
+[node name="DoorRed" parent="." instance=ExtResource( 10 )]
+position = Vector2( 692, 380 )
+perm_activated = true
+
 [connection signal="button_blue_pressed" from="ButtonBlue" to="DoorBlue" method="_on_ButtonBlue_button_blue_pressed"]
 [connection signal="button_blue_released" from="ButtonBlue" to="DoorBlue" method="_on_ButtonBlue_button_blue_released"]
 [connection signal="button_green_pressed" from="ButtonGreen" to="DoorGreen" method="_on_ButtonGreen_button_green_pressed"]
 [connection signal="button_green_released" from="ButtonGreen" to="DoorGreen" method="_on_ButtonGreen_button_green_released"]
+[connection signal="button_red_pressed" from="ButtonRed" to="DoorRed" method="_on_ButtonRed_button_red_pressed"]
+[connection signal="button_red_released" from="ButtonRed" to="DoorRed" method="_on_ButtonRed_button_red_released"]
