@@ -19,16 +19,20 @@ func _ready():
 
 func _on_ButtonGreen_button_green_pressed():
 	if reversed:
-		door_up()
+		if not is_open_perm:
+			door_up()
 	else:
-		door_down()
+		if not is_closed_perm:
+			door_down()
 
 
 func _on_ButtonGreen_button_green_released():
 	if reversed:
-		door_down()
+		if not is_closed_perm:
+			door_down()
 	else:
-		door_up()
+		if not is_open_perm:
+			door_up()
 
 func door_down():
 	$StaticBody2D/CollisionShape2D.disabled = true
