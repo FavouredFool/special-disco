@@ -21,8 +21,8 @@ collision_mask = 11
 collision/safe_margin = 1.0
 script = ExtResource( 2 )
 speed = 200.0
-jump_strength = 800.0
-gravity = 3500.0
+jump_strength = 950.0
+gravity = 5000.0
 bounce_multiplicator = 1.1
 
 [node name="RingSelection" type="Sprite" parent="."]
